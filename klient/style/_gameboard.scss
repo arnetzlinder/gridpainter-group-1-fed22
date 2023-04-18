@@ -1,0 +1,25 @@
+$gameboardSize: 15;
+$colsize: 50px;
+
+.game {
+  display: grid;
+  grid-template-columns: repeat($gameboardSize, $colsize);
+  grid-template-rows: repeat($gameboardSize, $colsize);
+  width: 600px;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  background-color: yellow;
+  width: $colsize;
+  height: $colsize;
+  border: 1px solid black;
+}
+
+.color {
+    background-color: black;
+}
+
