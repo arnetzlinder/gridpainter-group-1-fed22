@@ -1,6 +1,4 @@
 // @import "normalize.scss";
 @import "base";
-
-body {
-    background-color: red;
-}
+@import "login";
+@import "register";
