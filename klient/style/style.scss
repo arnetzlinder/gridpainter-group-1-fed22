@@ -1,7 +1,10 @@
 // @import "normalize.scss";
 @import "base";
+@import "login";
+@import "register";
 @import "gameboard";
 
 body {
     background-color: red;
 }
+
