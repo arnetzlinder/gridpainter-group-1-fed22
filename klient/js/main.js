@@ -5,3 +5,7 @@ import { renderHome } from "./home.js";
 const socket = io();
 
 renderLogin();
+
+//Calling the renderGameboardfunction to render the gameboard
+renderGameboard();
+
