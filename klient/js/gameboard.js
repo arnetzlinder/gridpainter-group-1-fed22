@@ -1,7 +1,9 @@
 import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
 const socket = io("http://localhost:3000");
+import { renderGamechat } from "./gamechat.js";
 
 export function renderGameboard() {
+    renderGamechat();
     // Here we append the HTML-element to the gameboard element
     const gameboard = document.getElementById('game');
 
