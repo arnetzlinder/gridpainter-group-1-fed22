@@ -5,7 +5,7 @@
 Gruppmedlemmar: Susanne, Veronica, Mostapha, Evelina, Abdullah och Nikolaj
 
 
-##Verktyget
+## Verktyget
 
 Ni skall tillsammans i eran grupp ta fram en applikation för att färglägga online.
 Färgläggning skall ske i realtid mellan samtliga inloggade i applikationen, minst 4 st.
@@ -18,7 +18,7 @@ Spara – En bild skall kunna sparas och öppnas igen.
 
 Bonus! Applikationen skall deployas på Digital Ocean så att vi kan rita ihop!
 
-##Spelet
+## Spelet
 
 Skapa minst 5 st bilder “facit” som slumpas när en session börjar, bilder innehåller de färger som deltagarna är tilldelade. Samtliga användare ser orginalbilden och nu skall deltagarna på tid försöka tillsammans måla en bild som är så lik orginalet som möjligt, genom att färglägga med sin tilldelade färg. 
 
