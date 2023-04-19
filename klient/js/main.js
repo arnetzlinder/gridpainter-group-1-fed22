@@ -6,8 +6,8 @@ import { renderGameboard } from "./gameboard.js";
 import { renderGamechat } from "./gamechat.js";
 const socket = io("http://localhost:3000");
 
-//renderLogin();
+renderLogin();
 
 //Calling the renderGameboardfunction to render the gameboard
-renderGameboard();
-renderGamechat();
+//renderGameboard();
+//renderGamechat();

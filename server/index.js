@@ -25,9 +25,15 @@ const io = require("socket.io")(server, {
 
 io.on("connection", (socket) => {
   console.log("någon är här");
+
   socket.on("paint", (arg) => {
     console.log("incoming paint", arg);
     io.emit("paint", arg);
+  });
+
+  socket.on("chat", (arg) => {
+    console.log("chat", arg);
+    io.emit("chat", arg);
   });
 });
 
