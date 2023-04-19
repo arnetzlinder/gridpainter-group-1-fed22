@@ -4,6 +4,7 @@ import { renderRegister, renderRegComplete } from "./register.js";
 import { renderHome } from "./home.js";
 import { renderGameboard } from "./gameboard.js";
 import { renderGamechat } from "./gamechat.js";
+import { renderHeader } from "./header.js";
 const socket = io("http://localhost:3000");
 
 renderLogin();

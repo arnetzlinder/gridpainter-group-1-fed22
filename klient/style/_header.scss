@@ -1,0 +1,62 @@
+#logo-container {
+  display: flex;
+  justify-content: center;
+  height: 70px;
+  align-items: center;
+}
+
+#nav-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 70px;
+  align-items: center;
+  background-color: #f1d6ab;
+  font-family: "Rubik", sans-serif;
+}
+
+#nav-buttons {
+  color: #242424;
+}
+
+.navBtn {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  margin-right: 60px;
+  font-size: 1.4rem;
+  color: #242424;
+  left: 30px;
+}
+
+#logout-container {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  margin-right: 24px;
+}
+
+#welcome-text {
+  margin-right: 60px;
+  align-self: center;
+  color: #242424;
+}
+
+#logout-button {
+  position: relative;
+  border: 1px solid #242424;
+  background-color: #242424;
+  color: inherit;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  font-size: 1rem;
+  color: whitesmoke;
+  width: 70px;
+  height: 32px;
+  top: 0px;
+}
