@@ -6,7 +6,7 @@ const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mysql = require("mysql2");
-const connection = require("./conn");
+//const connection = require("./conn");sta
 require("dotenv").config();
 
 const registerRouter = require("./routes/register");
@@ -28,6 +28,10 @@ io.on("connection", (socket) => {
   socket.on("chat", (arg) => {
     console.log("incoming chat", arg);
     io.emit("chat", arg);
+  });
+  socket.on("paint", (arg) => {
+    console.log("incoming klick", arg);
+    io.emit("paint", arg);
   });
 });
 
