@@ -1,0 +1,9 @@
+.gameFlex{
+  display: flex;
+  justify-content: space-between;
+  .chatContainer{
+    width: 30%;
+    height: 100vh;
+    border: 1px solid black;
+  }
+}
