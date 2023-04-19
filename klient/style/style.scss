@@ -1,62 +1,8 @@
 // @import "normalize.scss";
 @import "base";
+@import "roomoverview.scss";
 
 
 
-#main {
-    display: grid;
-    grid-template-areas: "a a a";
-    justify-content: space-around;
-    gap: 1rem;
-    text-align: center;
-    background-color: purple;
-    width: 75vw;
-    height: 100vh;
-}
-
-#header {
-    background-color: lightblue;
-    font-size: 1.5rem;
-}
-
-.room {
-    background-color: orange;
-    width: 15rem;
-    height: 15rem;
-    margin-top: 3rem;
-}
-
-.gameRoom {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-top: 5rem;
-}
-
-.join {
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: lightblue;
-    border-radius: 10px 0 10px 0;
-
-}
-
-.choose {
-    text-align: center;
-    margin: 0;
-}
-
-.chatRoom {
-    font-size: 2rem;
-    text-align: center;
-}
-
-#chat {
-    border: solid 2px black;
-    width: 25vw;
-}
-
-#flex {
-    display: flex;
-}
 
 

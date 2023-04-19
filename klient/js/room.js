@@ -2,9 +2,14 @@ const main = document.getElementById("main");
 const header = document.getElementById("header");
 const chat = document.getElementById("chat");
 
+
+
 const choose = document.createElement("h1");
 choose.classList.add("choose");
 choose.innerText = "Choose a room";
+const logut = document.createElement("button");
+logut.classList.add("logut");
+logut.innerText = "Logut";
 const chatRoom = document.createElement("div");
 chatRoom.classList.add("chatRoom");
 chatRoom.innerText = "Chat Room";
@@ -30,7 +35,7 @@ export default function printRoom() {
         room.append(gameRoom, join);
         main.append(room);
         chat.append(chatRoom);
-        header.prepend(choose);
+        header.append(logut, choose);
     }
     
 

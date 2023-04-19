@@ -1,0 +1,63 @@
+#main {
+    display: grid;
+    grid-template-areas: "a a a";
+    justify-content: space-around;
+    gap: 1rem;
+    text-align: center;
+    background-color: slategrey;
+    width: 75%;
+    height: 100vh;
+}
+
+#header {
+    color: white;
+    background-color: black;
+    font-size: 1.5rem;
+}
+
+.logut {
+    background-color: lightblue;
+    margin-top: 1rem;
+}
+
+.room {
+    background-color: gainsboro;;
+    width: 15rem;
+    height: 15rem;
+    margin-top: 3rem;
+    border: solid 3px black;
+    border-radius: 15%;
+}
+
+.gameRoom {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 5rem;
+}
+
+.join {
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: lightblue;
+    border-radius: 10px 0 10px 0;
+
+}
+
+.choose {
+    text-align: center;
+    margin: 0;
+}
+
+.chatRoom {
+    font-size: 2rem;
+    text-align: center;
+}
+
+#chat {
+    border: solid 2px black;
+    width: 25%;
+}
+
+#flex {
+    display: flex;
+}
