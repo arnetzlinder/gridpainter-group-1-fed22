@@ -1,0 +1,65 @@
+.brown {
+    background-color: rgb(75, 29, 29);
+}
+
+.black {
+    background-color: black;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.red {
+    background-color: red;
+}
+
+#brown {
+    margin: 1rem;
+    background-color: rgb(75, 29, 29);
+    color:white;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+#black {
+    margin: 1rem;
+    background-color: black;
+    color:white;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+#yellow {
+    margin: 1rem;
+    background-color: yellow;
+    color: black;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+#red {
+    margin: 1rem;
+    background-color: red;
+    color:white;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+#saveBtn {
+    margin: 1rem;
+    background-color: white;
+    color:black;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
