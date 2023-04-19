@@ -1,3 +1,6 @@
+import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
+const socket = io("http://localhost:3000");
+
 export function renderGameboard() {
     // Here we append the HTML-element to the gameboard element
     const gameboard = document.getElementById('game');
@@ -21,8 +24,15 @@ export function renderGameboard() {
             //add click event listener to each cell
             cell.addEventListener('click', () => {
                 console.log('Cell clicked', j, i);
-                cell.classList.add('color');
+                socket.emit("paint", {paint: "color", id: cell.id});
             })
         }
     }
+    socket.on("paint", (arg) => {
+        let cell = document.getElementById(arg.id);
+        console.log("paint", arg);
+        console.log(arg.paint)
+        cell.classList.add(arg.paint);
+    })
+
 }
