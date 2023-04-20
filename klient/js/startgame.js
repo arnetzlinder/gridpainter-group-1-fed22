@@ -2,7 +2,8 @@
 export function renderStartBtn() {
   const gameboard = document.getElementById("game");
   const startGameBtn = document.createElement("button");
-  startGameBtn.innerText = "Starta spel";
+  startGameBtn.innerText = "STARTA SPEL";
+  startGameBtn.classList.add("startGameBtn");
 
   gameboard.appendChild(startGameBtn);
 
