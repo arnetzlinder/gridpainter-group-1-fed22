@@ -27,7 +27,6 @@ io.on("connection", (socket) => {
   console.log("någon är här");
 
   socket.on("paint", (arg) => {
-    console.log("incoming paint", arg);
     io.emit("paint", arg);
   });
 

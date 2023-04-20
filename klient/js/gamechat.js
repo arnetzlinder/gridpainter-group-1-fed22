@@ -3,7 +3,6 @@ const socket = io("http://localhost:3000");
 
 export function renderGamechat(){
   let userName = localStorage.getItem('userName');
-  console.log(userName)
   let chatContainer = document.getElementById('chatContainer');
   chatContainer.innerHTML = `
   <div id="messages"></div>
@@ -15,7 +14,6 @@ export function renderGamechat(){
   let messageContainer = document.getElementById('messages');
 
   sendMsgBtn.addEventListener('click', () => {
-    console.log('click')
     socket.emit("chat", {message: messageInput.value, user: userName});
   })
 

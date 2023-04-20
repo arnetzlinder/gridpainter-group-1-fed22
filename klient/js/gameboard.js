@@ -25,16 +25,12 @@ export function renderGameboard() {
 
             //add click event listener to each cell
             cell.addEventListener('click', () => {
-                console.log('Cell clicked', j, i);
                 socket.emit("paint", {paint: "color", id: cell.id});
             })
         }
     }
     socket.on("paint", (arg) => {
         let cell = document.getElementById(arg.id);
-        console.log("paint", arg);
-        console.log(arg.paint)
         cell.classList.add(arg.paint);
     })
-
 }
