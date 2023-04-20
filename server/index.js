@@ -29,9 +29,9 @@ io.on("connection", (socket) => {
     console.log("incoming chat", arg);
     io.emit("chat", arg);
   });
-  socket.on("paint", (arg) => {
+  socket.on("client:cellClicked", (arg) => {
     console.log("incoming klick", arg);
-    io.emit("paint", arg);
+    io.emit("server:cellClicked", arg);
   });
 });
 

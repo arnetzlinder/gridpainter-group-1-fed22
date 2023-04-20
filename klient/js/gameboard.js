@@ -1,5 +1,9 @@
-import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
-const socket = io("http://localhost:3000");
+import { socket } from "./socket.js";
+
+//
+socket.on("server:cellClicked", ({ x, y }) => {
+  document.getElementById(`${x}-${y}`).classList.add("color");
+});
 
 export function renderGameboard() {
   // Here we append the HTML-element to the gameboard element
@@ -22,13 +26,11 @@ export function renderGameboard() {
       row.appendChild(cell);
 
       //add click event listener to each cell
-      socket.on("paint", (arg) => {
-        console.log("paint", arg);
-      });
       cell.addEventListener("click", () => {
         console.log("Cell clicked", j, i);
         cell.classList.add("color");
-        socket.emit("cellClicked");
+        socket.emit("client:cellClicked", { x: j, y: i });
+        //color can be added here
       });
     }
   }
