@@ -1,7 +1,9 @@
 import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
 const socket = io("http://localhost:3000");
 import { renderGamechat } from "./gamechat.js";
+import { saveImage } from "./pictures.js";
 
+const gameFlex = document.getElementById("gameFlex");
 const gameboard = document.getElementById("game");
 
 export function renderGameboard() {
@@ -37,28 +39,23 @@ export function renderGameboard() {
   });
 }
 
+// Temportaty button for saving images
+
 export function renderSaveButton() {
   let saveImageButton = document.createElement("button");
   saveImageButton.id = "save-image-button";
   saveImageButton.innerHTML = "Save Image";
 
   saveImageButton.addEventListener("click", function () {
-    const gameBoard = document.getElementById("game");
+    let gameBoard = document.getElementById("game");
 
     html2canvas(gameBoard).then(function (canvas) {
-      const dataURL = canvas.toDataURL();
+      let dataURL = canvas.toDataURL();
       saveImage(dataURL);
     });
   });
 
   gameboard.append(saveImageButton);
-}
-
-function saveImage(dataURL) {
-  const link = document.createElement("a");
-  link.download = "game-board.png";
-  link.href = dataURL;
-  link.click();
 }
 
 renderSaveButton();

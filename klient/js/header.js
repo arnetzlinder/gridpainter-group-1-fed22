@@ -1,4 +1,7 @@
+import { renderPreviousGames } from "./recentGames.js";
+
 const headerContainer = document.getElementById("header");
+const gameFlex = document.getElementById("gameFlex");
 
 export function renderHeader() {
   let headerWrapper = document.createElement("div");
@@ -26,6 +29,10 @@ export function renderHeader() {
   homeButton.classList.add("navBtn");
   homeButton.innerHTML = "Home";
 
+  homeButton.addEventListener("click", function () {
+    location.reload();
+  });
+
   let profileButton = document.createElement("button");
   profileButton.id = "profile-button";
   profileButton.classList.add("navBtn");
@@ -35,6 +42,12 @@ export function renderHeader() {
   scoreboardButton.id = "scoreboard-button";
   scoreboardButton.classList.add("navBtn");
   scoreboardButton.innerHTML = "Scoreboard";
+
+  scoreboardButton.addEventListener("click", function () {
+    gameFlex.innerHTML = "";
+
+    renderPreviousGames();
+  });
 
   headerWrapper.append(navContainer);
   navContainer.append(navButtons);

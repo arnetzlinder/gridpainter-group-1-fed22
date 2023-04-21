@@ -11,6 +11,7 @@ require("dotenv").config();
 
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
+const imagesRouter = require("./routes/images");
 
 app.get("/", (req, res) => {
   res.send("Hej Socket server");
@@ -47,3 +48,4 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+app.use("/images", imagesRouter);
