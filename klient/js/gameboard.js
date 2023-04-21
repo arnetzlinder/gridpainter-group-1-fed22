@@ -4,6 +4,7 @@ import { renderGamechat } from "./gamechat.js";
 
 export function renderGameboard() {
     renderGamechat();
+    
     // Here we append the HTML-element to the gameboard element
     const gameboard = document.getElementById('game');
 

@@ -2,8 +2,11 @@ import { renderHome } from "./home.js";
 import { renderRegister } from "./register.js";
 import { renderGameboard } from "./gameboard.js";
 import { renderHeader } from "./header.js";
+import pushBtn from "./time.js";
+
 
 const loginCont = document.getElementById("login-container");
+
 
 export function renderLogin() {
   console.log("yes");
@@ -66,6 +69,7 @@ export function renderLogin() {
         loginCont.innerHTML = "";
         renderHeader();
         renderGameboard();
+        pushBtn();
       } else {
         const error = await response.text();
         throw new Error(error);
@@ -86,6 +90,7 @@ export function renderLogin() {
 
     renderRegister();
   });
+
 
   loginCont.append(loginWrapper);
   loginWrapper.append(logo);
