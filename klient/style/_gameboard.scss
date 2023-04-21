@@ -2,19 +2,11 @@ $gameboardSize: 15;
 $colsize: 50px;
 
 //.game {
-<<<<<<< HEAD
-  // display: grid;
-  // grid-template-columns: repeat($gameboardSize, $colsize);
-  // grid-template-rows: repeat($gameboardSize, $colsize);
-  // width: 600px;
-  // height: 600px;
-=======
 // display: grid;
 // grid-template-columns: repeat($gameboardSize, $colsize);
 // grid-template-rows: repeat($gameboardSize, $colsize);
 // width: 600px;
 // height: 600px;
->>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
 //}
 
 .row {
@@ -22,22 +14,13 @@ $colsize: 50px;
 }
 
 .cell {
-<<<<<<< HEAD
-  background-color: yellow;
-=======
   background-color: white;
->>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
   width: $colsize;
   height: $colsize;
   border: 1px solid black;
 }
 
 .color {
-<<<<<<< HEAD
-    background-color: black;
-}
-
-=======
   background-color: black;
 }
 
@@ -46,4 +29,3 @@ $colsize: 50px;
   margin: 1em;
   background-color: rgb(90, 222, 174);
 }
->>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f

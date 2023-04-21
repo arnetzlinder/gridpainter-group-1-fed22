@@ -2,19 +2,11 @@ import { renderHome } from "./home.js";
 import { renderRegister } from "./register.js";
 import { renderGameboard } from "./gameboard.js";
 import { renderHeader } from "./header.js";
-<<<<<<< HEAD
 import startGame from "./time.js";
-
-
-const loginCont = document.getElementById("login-container");
-
-
-=======
 import { renderColors } from "./pickcolor.js";
 
 const loginCont = document.getElementById("login-container");
 
->>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
 export function renderLogin() {
   console.log("yes");
   let loginWrapper = document.createElement("div");
@@ -75,12 +67,9 @@ export function renderLogin() {
 
         loginCont.innerHTML = "";
         renderHeader();
-<<<<<<< HEAD
         renderGameboard();
         startGame();
-=======
         renderColors();
->>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
       } else {
         const error = await response.text();
         throw new Error(error);
@@ -102,10 +91,6 @@ export function renderLogin() {
     renderRegister();
   });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
   loginCont.append(loginWrapper);
   loginWrapper.append(logo);
   loginWrapper.append(loginForm);
