@@ -24,8 +24,26 @@ const io = require("socket.io")(server, {
   },
 });
 
+let startBtns = ['<button id="btn-0" class="colorBtn">', '<button id="btn-1" class="colorBtn">', '<button id="btn-2" class="colorBtn">', '<button id="btn-3" class="colorBtn">']
+
 io.on("connection", (socket) => {
   console.log("någon är här");
+
+  socket.on("entering", (arg) => {
+    io.emit("entering", startBtns);
+  });
+
+  socket.on("removeColor", (arg) => {
+    console.log(arg)
+    //io.emit("entering", startBtns);
+    const index = startBtns.indexOf(arg.button)
+
+    if(index > -1){
+      startBtns.splice(index,1)
+    }
+    
+    io.emit("entering", startBtns);
+  });
 
   socket.on("paint", (arg) => {
     io.emit("paint", arg);
