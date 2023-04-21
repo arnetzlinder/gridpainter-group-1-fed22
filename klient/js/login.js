@@ -2,7 +2,7 @@ import { renderHome } from "./home.js";
 import { renderRegister } from "./register.js";
 import { renderGameboard } from "./gameboard.js";
 import { renderHeader } from "./header.js";
-import pushBtn from "./time.js";
+import startGame from "./time.js";
 
 
 const loginCont = document.getElementById("login-container");
@@ -69,7 +69,7 @@ export function renderLogin() {
         loginCont.innerHTML = "";
         renderHeader();
         renderGameboard();
-        pushBtn();
+        startGame();
       } else {
         const error = await response.text();
         throw new Error(error);

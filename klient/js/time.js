@@ -1,10 +1,10 @@
 let gameFlex = document.getElementById("gameFlex");
-export default function pushBtn() {
+export default function startGame() {
     let startGameBtn = document.createElement("button");
     startGameBtn.classList.add("startGameBtn");
     startGameBtn.innerHTML = "Start Game";
-    startGameBtn.addEventListener("click", startGame);
-    function startGame() {
+    startGameBtn.addEventListener("click", printTime);
+    function printTime() {
         const startingMinutes = 5;
         let time = startingMinutes * 60;
         let myInterval = setInterval(updateCountDown, 1000);
