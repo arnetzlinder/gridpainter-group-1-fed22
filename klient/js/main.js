@@ -8,10 +8,10 @@ import { renderHeader } from "./header.js";
 import { renderColors } from "./pickcolor.js";
 const socket = io("http://localhost:3000");
 
-//renderLogin();
+renderLogin();
 
-renderHeader();
-renderColors();
+//renderHeader();
+//renderColors();
 
 //Calling the renderGameboardfunction to render the gameboard
 //renderGameboard();
