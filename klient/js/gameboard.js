@@ -2,7 +2,14 @@ import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
 const socket = io("http://localhost:3000");
 
 import { renderGamechat } from "./gamechat.js";
+
+import { saveImage } from "./pictures.js";
+
+const gameFlex = document.getElementById("gameFlex");
+const gameboard = document.getElementById("game");
+
 import { renderStartBtn } from "./startgame.js";
+
 
 export function renderGameboard() {
   renderGamechat();
@@ -35,5 +42,30 @@ export function renderGameboard() {
     let cell = document.getElementById(arg.id);
     cell.classList.add(arg.paint);
   });
+
+}
+
+// Temportaty button for saving images
+
+export function renderSaveButton() {
+  let saveImageButton = document.createElement("button");
+  saveImageButton.id = "save-image-button";
+  saveImageButton.innerHTML = "Save Image";
+
+  saveImageButton.addEventListener("click", function () {
+    let gameBoard = document.getElementById("game");
+
+    html2canvas(gameBoard).then(function (canvas) {
+      let dataURL = canvas.toDataURL();
+      saveImage(dataURL);
+    });
+  });
+
+  gameboard.append(saveImageButton);
+}
+
+renderSaveButton();
+
   renderStartBtn();
 }
+

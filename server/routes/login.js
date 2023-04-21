@@ -33,7 +33,7 @@ router.post("/", async function (req, res) {
             process.env.JWT_SECRET,
             console.log(process.env.JWT_SECRET)
           );
-          res.status(200).send({ token });
+          res.status(200).send({ token, user_id: user.user_id });
         }
       }
     });

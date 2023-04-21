@@ -1,4 +1,3 @@
-import { renderHome } from "./home.js";
 import { renderRegister } from "./register.js";
 import { renderGameboard } from "./gameboard.js";
 import { renderHeader } from "./header.js";
@@ -7,7 +6,6 @@ import { renderColors } from "./pickcolor.js";
 const loginCont = document.getElementById("login-container");
 
 export function renderLogin() {
-  console.log("yes");
   let loginWrapper = document.createElement("div");
   loginWrapper.id = "login-wrapper";
 
@@ -55,14 +53,11 @@ export function renderLogin() {
       });
 
       if (response.status === 200) {
-        const { token } = await response.json();
+        const { token, user_id } = await response.json();
         localStorage.setItem("token", token);
         localStorage.setItem("userName", username);
-
-        const requestHeaders = {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        };
+        localStorage.setItem("user_id", user_id);
+        console.log(user_id);
 
         loginCont.innerHTML = "";
         renderHeader();
