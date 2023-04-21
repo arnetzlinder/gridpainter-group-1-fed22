@@ -2,35 +2,63 @@ import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
 const socket = io("http://localhost:3000");
 import { renderGamechat } from "./gamechat.js";
 
+const gameboard = document.getElementById("game");
+
 export function renderGameboard() {
-    renderGamechat();
-    // Here we append the HTML-element to the gameboard element
-    const gameboard = document.getElementById('game');
+  renderGamechat();
+  // Here we append the HTML-element to the gameboard element
+  const gameboard = document.getElementById("game");
 
-    //size of gameboard
-    const gameboardSize = 15;
+  //size of gameboard
+  const gameboardSize = 15;
 
-    //loop for creating rows
-    for (let i = 0; i < gameboardSize; i++) {
-        const row = document.createElement('div');
-        row.classList.add('row');
-        gameboard.appendChild(row);
+  //loop for creating rows
+  for (let i = 0; i < gameboardSize; i++) {
+    const row = document.createElement("div");
+    row.classList.add("row");
+    gameboard.appendChild(row);
 
-        //loop for creating cells within each row
-        for (let j = 0; j < gameboardSize; j++) {
-            const cell = document.createElement('div');
-            cell.classList.add('cell');
-            cell.id = j.toString()+"-"+i.toString();
-            row.appendChild(cell);
+    //loop for creating cells within each row
+    for (let j = 0; j < gameboardSize; j++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.id = j.toString() + "-" + i.toString();
+      row.appendChild(cell);
 
-            //add click event listener to each cell
-            cell.addEventListener('click', () => {
-                socket.emit("paint", {paint: "color", id: cell.id});
-            })
-        }
+      //add click event listener to each cell
+      cell.addEventListener("click", () => {
+        socket.emit("paint", { paint: "color", id: cell.id });
+      });
     }
-    socket.on("paint", (arg) => {
-        let cell = document.getElementById(arg.id);
-        cell.classList.add(arg.paint);
-    })
+  }
+  socket.on("paint", (arg) => {
+    let cell = document.getElementById(arg.id);
+    cell.classList.add(arg.paint);
+  });
 }
+
+export function renderSaveButton() {
+  let saveImageButton = document.createElement("button");
+  saveImageButton.id = "save-image-button";
+  saveImageButton.innerHTML = "Save Image";
+
+  saveImageButton.addEventListener("click", function () {
+    const gameBoard = document.getElementById("game");
+
+    html2canvas(gameBoard).then(function (canvas) {
+      const dataURL = canvas.toDataURL();
+      saveImage(dataURL);
+    });
+  });
+
+  gameboard.append(saveImageButton);
+}
+
+function saveImage(dataURL) {
+  const link = document.createElement("a");
+  link.download = "game-board.png";
+  link.href = dataURL;
+  link.click();
+}
+
+renderSaveButton();
