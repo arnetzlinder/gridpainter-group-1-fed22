@@ -2,6 +2,7 @@ import { renderHome } from "./home.js";
 import { renderRegister } from "./register.js";
 import { renderGameboard } from "./gameboard.js";
 import { renderHeader } from "./header.js";
+import { renderColors } from "./pickcolor.js";
 
 const loginCont = document.getElementById("login-container");
 
@@ -65,7 +66,7 @@ export function renderLogin() {
 
         loginCont.innerHTML = "";
         renderHeader();
-        renderGameboard();
+        renderColors();
       } else {
         const error = await response.text();
         throw new Error(error);
