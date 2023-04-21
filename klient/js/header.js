@@ -41,7 +41,7 @@ export function renderHeader() {
   let scoreboardButton = document.createElement("button");
   scoreboardButton.id = "scoreboard-button";
   scoreboardButton.classList.add("navBtn");
-  scoreboardButton.innerHTML = "Scoreboard";
+  scoreboardButton.innerHTML = "My Pictures";
 
   scoreboardButton.addEventListener("click", function () {
     gameFlex.innerHTML = "";
