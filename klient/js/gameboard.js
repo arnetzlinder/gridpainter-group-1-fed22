@@ -1,5 +1,6 @@
 import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
 const socket = io("http://localhost:3000");
+
 import { renderGamechat } from "./gamechat.js";
 import { renderStartBtn } from "./startgame.js";
 
