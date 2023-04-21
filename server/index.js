@@ -11,6 +11,10 @@ require("dotenv").config();
 
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
+<<<<<<< HEAD
+=======
+const imagesRouter = require("./routes/images");
+>>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
 
 app.get("/", (req, res) => {
   res.send("Hej Socket server");
@@ -18,16 +22,50 @@ app.get("/", (req, res) => {
 
 const io = require("socket.io")(server, {
   cors: {
+<<<<<<< HEAD
     origin: "http://127.0.0.1:5501",
+=======
+    origin: "http://127.0.0.1:5502",
+>>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
     methods: ["GET", "POST"],
   },
 });
 
+<<<<<<< HEAD
 io.on("connection", (socket) => {
   console.log("någon är här");
 
   socket.on("paint", (arg) => {
     console.log("incoming paint", arg);
+=======
+let startBtns = [
+  '<button id="btn-0" class="colorBtn">',
+  '<button id="btn-1" class="colorBtn">',
+  '<button id="btn-2" class="colorBtn">',
+  '<button id="btn-3" class="colorBtn">',
+];
+
+io.on("connection", (socket) => {
+  console.log("någon är här");
+
+  socket.on("entering", (arg) => {
+    io.emit("entering", startBtns);
+  });
+
+  socket.on("removeColor", (arg) => {
+    console.log(arg);
+    //io.emit("entering", startBtns);
+    const index = startBtns.indexOf(arg.button);
+
+    if (index > -1) {
+      startBtns.splice(index, 1);
+    }
+
+    io.emit("entering", startBtns);
+  });
+
+  socket.on("paint", (arg) => {
+>>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
     io.emit("paint", arg);
   });
 
@@ -48,3 +86,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
+<<<<<<< HEAD
+=======
+app.use("/images", imagesRouter);
+>>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f

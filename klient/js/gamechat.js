@@ -3,7 +3,10 @@ const socket = io("http://localhost:3000");
 
 export function renderGamechat(){
   let userName = localStorage.getItem('userName');
+<<<<<<< HEAD
   console.log(userName)
+=======
+>>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
   let chatContainer = document.getElementById('chatContainer');
   chatContainer.innerHTML = `
   <div id="messages"></div>
@@ -15,7 +18,10 @@ export function renderGamechat(){
   let messageContainer = document.getElementById('messages');
 
   sendMsgBtn.addEventListener('click', () => {
+<<<<<<< HEAD
     console.log('click')
+=======
+>>>>>>> 5ac9bd53ff54c446215cd806a1b56977d3ab636f
     socket.emit("chat", {message: messageInput.value, user: userName});
   })
 
