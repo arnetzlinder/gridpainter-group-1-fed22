@@ -3,6 +3,7 @@ const socket = io("http://localhost:3000");
 
 import { renderGameboard } from "./gameboard.js";
 import { renderGamechat } from "./gamechat.js";
+localStorage.removeItem('playerColor')
 
 let cont = document.getElementById('pickColors');
 
@@ -48,36 +49,23 @@ function renderButtons(colorsArr){
 
   buttons.forEach(button => {
     button.addEventListener('click', (e) => {
-      //cont.innerHTML = '';
-      // renderGameboard();
-      // renderGamechat();
-      if(e.target.id == 'btn-0'){
-        localStorage.setItem('playerColor', 'red');
-        socket.emit("removeColor", {button: '<button id="btn-0" class="colorBtn">'});
-        socket.on("removeColor", (arg) => {
-        //renderButtons(arg);
-        })
 
-      } else if(e.target.id == 'btn-1'){
-        localStorage.setItem('playerColor', 'yellow');
-        socket.emit("removeColor", {button: '<button id="btn-1" class="colorBtn">'});
-        socket.on("removeColor", (arg) => {
-        //renderButtons(arg);
-        })
-      } else if(e.target.id == 'btn-2'){
-        localStorage.setItem('playerColor', 'brown');
-        socket.emit("removeColor", {button: '<button id="btn-2" class="colorBtn">'});
-        socket.on("removeColor", (arg) => {
-        //renderButtons(arg);
-        })
-
-      } else if(e.target.id == 'btn-3'){
-        localStorage.setItem('playerColor', 'black');
-        socket.emit("removeColor", {button: '<button id="btn-3" class="colorBtn">'});
-        socket.on("removeColor", (arg) => {
-        //renderButtons(arg);
-        })
-      } 
+        if(e.target.id == 'btn-0'){
+          localStorage.setItem('playerColor', 'red');
+          socket.emit("removeColor", {button: '<button id="btn-0" class="colorBtn">'});
+  
+        } else if(e.target.id == 'btn-1'){
+          localStorage.setItem('playerColor', 'yellow');
+          socket.emit("removeColor", {button: '<button id="btn-1" class="colorBtn">'});
+  
+        } else if(e.target.id == 'btn-2'){
+          localStorage.setItem('playerColor', 'brown');
+          socket.emit("removeColor", {button: '<button id="btn-2" class="colorBtn">'});
+  
+        } else if(e.target.id == 'btn-3'){
+          localStorage.setItem('playerColor', 'black');
+          socket.emit("removeColor", {button: '<button id="btn-3" class="colorBtn">'});
+        } 
     })
   })
 }
