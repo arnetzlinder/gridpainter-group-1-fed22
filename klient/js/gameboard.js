@@ -34,6 +34,7 @@ export function renderGameboard() {
   socket.on("paint", (arg) => {
     let cell = document.getElementById(arg.id);
     cell.classList.add(arg.paint);
+    console.log('Received cell paint event', arg.paint)
   });
   renderStartBtn();
 }
