@@ -1,4 +1,5 @@
 const headerContainer = document.getElementById("header");
+import { renderPreviousGames } from "./recentGames.js";
 
 export function renderHeader() {
   let headerWrapper = document.createElement("div");
@@ -26,21 +27,31 @@ export function renderHeader() {
   homeButton.classList.add("navBtn");
   homeButton.innerHTML = "Home";
 
+  homeButton.addEventListener("click", function () {
+    location.reload();
+  });
+
   let profileButton = document.createElement("button");
   profileButton.id = "profile-button";
   profileButton.classList.add("navBtn");
   profileButton.innerHTML = "Profile";
 
-  let scoreboardButton = document.createElement("button");
-  scoreboardButton.id = "scoreboard-button";
-  scoreboardButton.classList.add("navBtn");
-  scoreboardButton.innerHTML = "Scoreboard";
+  let myPicturesButton = document.createElement("button");
+  myPicturesButton.id = "scoreboard-button";
+  myPicturesButton.classList.add("navBtn");
+  myPicturesButton.innerHTML = "My Pictures";
+
+  myPicturesButton.addEventListener("click", function () {
+    gameFlex.innerHTML = "";
+
+    renderPreviousGames();
+  });
 
   headerWrapper.append(navContainer);
   navContainer.append(navButtons);
   navButtons.append(homeButton);
   navButtons.append(profileButton);
-  navButtons.append(scoreboardButton);
+  navButtons.append(myPicturesButton);
 
   let logoutContainer = document.createElement("div");
   logoutContainer.id = "logout-container";

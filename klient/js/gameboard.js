@@ -3,6 +3,7 @@ const socket = io("http://localhost:3000");
 
 import { renderGamechat } from "./gamechat.js";
 import { renderStartBtn } from "./startgame.js";
+import { renderSaveButton } from "./pictures.js";
 
 export function renderGameboard() {
   renderGamechat();
@@ -38,3 +39,5 @@ export function renderGameboard() {
   });
   renderStartBtn();
 }
+
+renderSaveButton();
