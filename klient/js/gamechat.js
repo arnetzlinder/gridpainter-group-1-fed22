@@ -7,7 +7,7 @@ export function renderGamechat(){
   chatContainer.innerHTML = `
   <div id="messages"></div>
   <input type="text" id="messageInput">
-  <button id="sendMsgBtn">skicka</button>`
+  <button id="sendMsgBtn">Skicka</button>`
 
   let sendMsgBtn = document.getElementById('sendMsgBtn');
   let messageInput = document.getElementById('messageInput');
@@ -15,10 +15,17 @@ export function renderGamechat(){
 
   sendMsgBtn.addEventListener('click', () => {
     socket.emit("chat", {message: messageInput.value, user: userName});
+    messageInput.value = '';
   })
 
   socket.on("chat", (arg) => {
     console.log(arg.user)
-    messageContainer.innerHTML += `<div><p><b>${arg.user}:</b> ${arg.message}</p></div>`
-})
+    if (arg.user=== userName) {
+      messageContainer.innerHTML += `<div class="sender"><p><b>${arg.user}:</b> ${arg.message}</p></div>`
+    }
+    else {
+      messageContainer.innerHTML += `<div class="receiver"><p><b>${arg.user}:</b> ${arg.message}</p></div>`
+    }
+  })
+  
 }
