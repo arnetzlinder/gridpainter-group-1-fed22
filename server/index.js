@@ -13,6 +13,7 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const imagesRouter = require("./routes/images");
 const picsRouter = require("./routes/pics");
+const comparisonRouter = require("./routes/comparison")
 
 app.get("/", (req, res) => {
   res.send("Hej Socket server");
@@ -20,7 +21,7 @@ app.get("/", (req, res) => {
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://127.0.0.1:5500",
+    origin: "http://127.0.0.1:5501",
     methods: ["GET", "POST"],
   },
 });
@@ -74,3 +75,4 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/images", imagesRouter);
 app.use("/pics", picsRouter);
+app.use("./comparison", comparisonRouter)
