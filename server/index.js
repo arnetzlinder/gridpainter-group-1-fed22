@@ -13,6 +13,7 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const imagesRouter = require("./routes/images");
 const picsRouter = require("./routes/pics");
+const comparisonRouter = require("./routes/comparison")
 
 app.get("/", (req, res) => {
   res.send("Hej Socket server");
@@ -74,3 +75,4 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/images", imagesRouter);
 app.use("/pics", picsRouter);
+app.use("./comparison", comparisonRouter)
