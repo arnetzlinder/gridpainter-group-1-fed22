@@ -13,14 +13,17 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const imagesRouter = require("./routes/images");
 const picsRouter = require("./routes/pics");
-
+const currentGameBoard = [[]];
+for (let j = 0;j<15;j++) {
+  currentGameBoard[j] = [];
+}
 app.get("/", (req, res) => {
   res.send("Hej Socket server");
 });
 
 const io = require("socket.io")(server, {
   cors: {
-    origin: "http://127.0.0.1:5500",
+    origin: "http://127.0.0.1:5501",
     methods: ["GET", "POST"],
   },
 });
@@ -53,12 +56,52 @@ io.on("connection", (socket) => {
 
   socket.on("paint", (arg) => {
     io.emit("paint", arg);
+    console.log("Somebody painted something on: ")
+    console.log(arg)
+    let x = arg.id.split('-');
+    console.log(x)
+    currentGameBoard[x[0]][x[1]] = arg.paint
+    console.log(currentGameBoard)
   });
 
   socket.on("chat", (arg) => {
     console.log("chat", arg);
     io.emit("chat", arg);
   });
+  socket.on("startgame", (arg) => {
+    console.log("Time to start the game!");
+    // selecxt a random image from tha databas
+    try {
+      const sql = "SELECT * FROM `examplepicture` ORDER BY RAND() LIMIT 1";
+      connection.query(sql, (error, results) => {
+        if (error) {
+          console.error(error);
+          console.log("Oh noes!")
+        } else {
+          io.emit('startgame', results[0])
+        }
+      });
+    } catch (error) {
+      console.log("Oh noes!")
+    }
+    
+    setTimeout(() => {
+      console.log("Now comes the end of time...")
+      let percentage = 
+
+
+      io.emit('endgame')
+
+    }, 10000);
+
+
+
+
+
+    //io.emit("chat", arg);
+  });
+
+
 });
 
 server.listen(3000);
