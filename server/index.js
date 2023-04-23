@@ -9,11 +9,13 @@ const mysql = require("mysql2");
 const connection = require("./conn");
 require("dotenv").config();
 
+
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const imagesRouter = require("./routes/images");
 const picsRouter = require("./routes/pics");
-const currentGameBoard = [[]];
+let currentGameBoard = [[]];
+let chosenGameBoard = [[]];
 for (let j = 0;j<15;j++) {
   currentGameBoard[j] = [];
 }
@@ -79,6 +81,8 @@ io.on("connection", (socket) => {
           console.log("Oh noes!")
         } else {
           io.emit('startgame', results[0])
+          chosenGameBoard = results[0]["picture-array"];
+          console.log(chosenGameBoard)
         }
       });
     } catch (error) {
@@ -87,12 +91,12 @@ io.on("connection", (socket) => {
     
     setTimeout(() => {
       console.log("Now comes the end of time...")
-      let percentage = 
+      let percentage = compareArrays(currentGameBoard, chosenGameBoard)
+      console.log("Percentage right was: "+percentage)
 
+      io.emit('endgame', percentage)
 
-      io.emit('endgame')
-
-    }, 10000);
+    }, 65000);
 
 
 
@@ -117,3 +121,21 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/images", imagesRouter);
 app.use("/pics", picsRouter);
+
+
+function compareArrays(array1, array2) {
+  const length = array1.length;
+  let counter = 0;
+
+  for(let i = 0; i < length; i++) {
+      for (let j = 0; j < length; j++){
+          if (array1[i][j] === array2[i][j]) {
+              counter++
+          } 
+      }
+
+  }
+
+  const percentage = counter/(array1.length*array1.length);
+  return percentage;
+}

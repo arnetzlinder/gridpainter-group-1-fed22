@@ -53,6 +53,9 @@ socket.on("startgame", (arg) => {
 
 socket.on("endgame", (arg) => {
   console.log("The end is near!!!!111one")
+  console.log("Correctly painted percentage: "+arg)
+  arg = arg*100;
+  window.alert("Correctly painted percentage: "+arg+"%")
 
 })
 //shows image for 5 secs and then clear board
