@@ -14,6 +14,7 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const imagesRouter = require("./routes/images");
 const picsRouter = require("./routes/pics");
+
 let currentGameBoard = [[]];
 let chosenGameBoard = [[]];
 for (let j = 0;j<15;j++) {
