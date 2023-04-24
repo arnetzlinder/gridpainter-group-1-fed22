@@ -29,7 +29,7 @@ export function renderGameboard() {
 
       //add click event listener to each cell
       cell.addEventListener("click", () => {
-        socket.emit("paint", { paint: "color", id: cell.id });
+        socket.emit("paint", { paint: localStorage.getItem('playerColor'), id: cell.id });
       });
     }
   }
