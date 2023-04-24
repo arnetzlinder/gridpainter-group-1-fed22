@@ -13,7 +13,7 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const imagesRouter = require("./routes/images");
 const picsRouter = require("./routes/pics");
-const comparisonRouter = require("./routes/comparison")
+const comparisonRouter = require("./routes/comparison");
 
 app.get("/", (req, res) => {
   res.send("Hej Socket server");
@@ -62,6 +62,33 @@ io.on("connection", (socket) => {
   });
 });
 
+// RENDER PLAYERS //
+
+const players = [];
+
+io.on("connection", (socket) => {
+  console.log("a user connected");
+
+  socket.on("new-player", (userName) => {
+    console.log(`New player joined: ${userName}`);
+
+    players.push(userName);
+
+    io.emit("player-list", players);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("a user disconnected");
+
+    const index = players.findIndex((player) => player.id === socket.id);
+    if (index !== -1) {
+      players.splice(index, 1);
+    }
+
+    io.emit("player-list", players);
+  });
+});
+
 server.listen(3000);
 
 app.use(cors());
@@ -75,4 +102,4 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/images", imagesRouter);
 app.use("/pics", picsRouter);
-app.use("./comparison", comparisonRouter)
+app.use("./comparison", comparisonRouter);

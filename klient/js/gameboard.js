@@ -4,6 +4,7 @@ const socket = io("http://localhost:3000");
 import { renderGamechat } from "./gamechat.js";
 import { renderStartBtn } from "./startgame.js";
 import { renderSaveButton } from "./pictures.js";
+import { renderPlayersButton } from "./currentusers.js";
 
 export function renderGameboard() {
   renderGamechat();
@@ -35,9 +36,10 @@ export function renderGameboard() {
   socket.on("paint", (arg) => {
     let cell = document.getElementById(arg.id);
     cell.classList.add(arg.paint);
-    console.log('Received cell paint event', arg.paint)
+    console.log("Received cell paint event", arg.paint);
   });
   renderStartBtn();
 }
 
 renderSaveButton();
+renderPlayersButton();
