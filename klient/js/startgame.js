@@ -1,4 +1,5 @@
 import { socket } from "./socket.js";
+import { renderButtons } from "./pickcolor.js";
 
 //start game button
 export function renderStartBtn() {
@@ -16,12 +17,6 @@ export function renderStartBtn() {
 async function startGame() {
   // plz start the game!
   socket.emit("startgame");
-
-  // const image = await fetchImage();
-  // //store in play image
-  // await showPreview(image);
-  // console.log("loggas");
-  // //await call TimerFunction (will start after 5 sec)
 }
 
 socket.on("startgame", (arg) => {
@@ -37,15 +32,12 @@ socket.on("startgame", (arg) => {
       cell.classList.add(color);
     }
   }
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const cells = document.getElementsByClassName("cell");
-      [...cells].forEach((cell) => {
-        cell.classList.remove("brown", "black", "red", "yellow");
-        resolve();
-      });
-    }, 5000);
-  });
+  setTimeout(() => {
+    const cells = document.getElementsByClassName("cell");
+    [...cells].forEach((cell) => {
+      cell.classList.remove("brown", "black", "red", "yellow");
+    });
+  }, 5000);
 });
 
 socket.on("endgame", (arg) => {
@@ -58,42 +50,19 @@ socket.on("endgame", (arg) => {
 
   gameContainer.innerHTML = `
   <h2>Ni fick ${percentage}% rätt</h2>
-  <button>Spela igen</button>`;
+  <button id="playAgainBtn">Spela igen</button>`;
+
+  //play again event
+  playAgainBtn.addEventListener("click", () => {
+    socket.emit("playAgain");
+  });
 
   //window.alert("Correctly painted percentage: "+arg+"%")
 });
-//shows image for 5 secs and then clear board
-function showPreview(image) {
-  for (let i = 0; i < image.length; i++) {
-    const row = image[i];
-    for (let j = 0; j < row.length; j++) {
-      const color = row[j];
-      const cell = document.getElementById(`${i}-${j}`);
-      cell.classList.remove("brown", "black", "red", "yellow");
-      cell.classList.add(color);
-    }
-  }
-  //timeOut after 5 sec and clear board (is a promise for other functions)
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const cells = document.getElementsByClassName("cell");
-      [...cells].forEach((cell) => {
-        cell.classList.remove("brown", "black", "red", "yellow");
-        resolve();
-      });
-    }, 5000);
-  });
-}
 
-//now fetching a random picture from db for every click on button
-async function fetchImage() {
-  const response = await fetch("http://localhost:3000/images/random", {
-    headers: { "Content-Type": "application/json" },
-  });
-  if (!response.ok) {
-    alert("Could not load image, please try again");
-  } else {
-    const imageData = await response.json();
-    return imageData["picture-array"];
-  }
-}
+// play again listener
+socket.on("playAgain", (startBtns) => {
+  let gameContainer = document.getElementById("game");
+  gameContainer.innerHTML = "";
+  renderButtons(startBtns);
+});

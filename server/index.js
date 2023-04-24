@@ -95,9 +95,22 @@ io.on("connection", (socket) => {
       console.log("Percentage right was: " + percentage);
 
       io.emit("endgame", percentage);
-    }, 65000);
+    }, 2000);
 
     //io.emit("chat", arg);
+  });
+
+  //play again listener
+  socket.on("playAgain", () => {
+    //reset color buttons
+    startBtns = [
+      '<button id="btn-0" class="colorBtn">',
+      '<button id="btn-1" class="colorBtn">',
+      '<button id="btn-2" class="colorBtn">',
+      '<button id="btn-3" class="colorBtn">',
+    ];
+    //emit play again to all clients
+    io.emit("playAgain", startBtns);
   });
 });
 

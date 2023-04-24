@@ -18,7 +18,7 @@ import { renderColors } from "./pickcolor.js";
 const token = localStorage.getItem("token");
 if (token) {
   renderHeader();
-  renderGameboard();
+  renderColors();
 } else {
   renderLogin();
 }

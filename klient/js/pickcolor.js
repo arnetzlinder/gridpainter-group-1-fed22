@@ -34,7 +34,6 @@ export function renderColors() {
         color = "svart";
       }
       cont.innerHTML = `<p>Du har valt färgen ${color}</p>`;
-      renderGameboard();
     } else {
       colorsArr = arg;
       renderButtons(colorsArr);
@@ -42,7 +41,7 @@ export function renderColors() {
   });
 }
 
-function renderButtons(colorsArr) {
+export function renderButtons(colorsArr) {
   console.log(colorsArr);
   if (colorsArr.length < 1) {
     cont.innerHTML = "Alla färger är tagna";
