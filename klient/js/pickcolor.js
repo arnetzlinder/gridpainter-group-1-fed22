@@ -4,6 +4,8 @@ const socket = io("http://localhost:3000");
 import { renderGameboard } from "./gameboard.js";
 import { renderGamechat } from "./gamechat.js";
 
+localStorage.removeItem('playerColor');
+
 let cont = document.getElementById('pickColors');
 
 export function renderColors(){
@@ -20,9 +22,20 @@ export function renderColors(){
   })
 
   socket.on("entering", (arg) => {
-    let color = localStorage.getItem('playerColor');
-    if(color){
+    let userColor = localStorage.getItem('playerColor');
+    if(userColor){
+      let color;
+      if(userColor == 'red'){
+        color = 'röd'
+      } else if(userColor == 'yellow'){
+        color = 'gul';
+      } else if(userColor == 'brown'){
+        color = 'brun';
+      } else{
+        color = 'svart';
+      }
       cont.innerHTML = `<p>Du har valt färgen ${color}</p>`;
+      renderGameboard();
     } else{
       colorsArr = arg;
       renderButtons(colorsArr);
