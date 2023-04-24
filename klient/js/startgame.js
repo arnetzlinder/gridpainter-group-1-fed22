@@ -1,6 +1,5 @@
-import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
+import { socket } from "./socket.js";
 import { renderButtons } from "./pickcolor.js";
-const socket = io("http://localhost:3000");
 
 //start game button
 export function renderStartBtn() {
