@@ -7,7 +7,6 @@ import { renderColors } from "./pickcolor.js";
 const loginCont = document.getElementById("login-container");
 
 export function renderLogin() {
-  console.log("yes");
   let loginWrapper = document.createElement("div");
   loginWrapper.id = "login-wrapper";
 
