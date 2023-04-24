@@ -81,7 +81,7 @@ io.on("connection", (socket) => {
           console.log("Oh noes!");
         } else {
           io.emit("startgame", results[0]);
-          chosenGameBoard = results[0]["picture-array"];
+          chosenGameBoard = JSON.parse(results[0]["picture-array"]);
           console.log(chosenGameBoard);
         }
       });
@@ -93,9 +93,12 @@ io.on("connection", (socket) => {
       console.log("Now comes the end of time...");
       let percentage = compareArrays(currentGameBoard, chosenGameBoard);
       console.log("Percentage right was: " + percentage);
+      for (let j = 0; j < 15; j++) {
+        currentGameBoard[j] = [];
+      }
 
       io.emit("endgame", percentage);
-    }, 2000);
+    }, 20000);
 
     //io.emit("chat", arg);
   });

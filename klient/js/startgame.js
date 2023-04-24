@@ -22,13 +22,15 @@ async function startGame() {
 socket.on("startgame", (arg) => {
   console.log("The server told us to strart the game with this image: ");
   console.log(arg);
-  let image = arg["picture-array"];
+  let image = JSON.parse(arg["picture-array"]);
+  
   for (let i = 0; i < image.length; i++) {
     const row = image[i];
     for (let j = 0; j < row.length; j++) {
       const color = row[j];
       const cell = document.getElementById(`${i}-${j}`);
       cell.classList.remove("brown", "black", "red", "yellow");
+      //console.log(color + " " + i + " "+ j)
       cell.classList.add(color);
     }
   }
