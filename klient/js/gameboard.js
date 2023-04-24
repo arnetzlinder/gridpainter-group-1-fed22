@@ -5,6 +5,7 @@ import { renderGamechat } from "./gamechat.js";
 import { renderStartBtn } from "./startgame.js";
 import { renderSaveButton } from "./pictures.js";
 import { renderPlayersButton } from "./currentusers.js";
+import { startTimerButton } from "./timer.js";
 
 export function renderGameboard() {
   renderGamechat();
@@ -29,7 +30,10 @@ export function renderGameboard() {
 
       //add click event listener to each cell
       cell.addEventListener("click", () => {
-        socket.emit("paint", { paint: localStorage.getItem('playerColor'), id: cell.id });
+        socket.emit("paint", {
+          paint: localStorage.getItem("playerColor"),
+          id: cell.id,
+        });
       });
     }
   }
@@ -43,3 +47,4 @@ export function renderGameboard() {
 
 renderSaveButton();
 renderPlayersButton();
+startTimerButton();
