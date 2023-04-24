@@ -1,6 +1,4 @@
-import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
-const socket = io("http://localhost:3000");
-
+import { socket } from "./socket.js";
 
 //start game button
 export function renderStartBtn() {
@@ -17,8 +15,7 @@ export function renderStartBtn() {
 //start game function
 async function startGame() {
   // plz start the game!
-  socket.emit('startgame')
-
+  socket.emit("startgame");
 
   // const image = await fetchImage();
   // //store in play image
@@ -28,9 +25,9 @@ async function startGame() {
 }
 
 socket.on("startgame", (arg) => {
-  console.log("The server told us to strart the game with this image: ")
-  console.log(arg)
-  let image = arg["picture-array"]
+  console.log("The server told us to strart the game with this image: ");
+  console.log(arg);
+  let image = arg["picture-array"];
   for (let i = 0; i < image.length; i++) {
     const row = image[i];
     for (let j = 0; j < row.length; j++) {
@@ -49,13 +46,13 @@ socket.on("startgame", (arg) => {
       });
     }, 5000);
   });
-})
+});
 
 socket.on("endgame", (arg) => {
-  let gameContainer = document.getElementById('game');
-  console.log("The end is near!!!!111one")
-  console.log("Correctly painted percentage: "+arg)
-  arg = arg*100;
+  let gameContainer = document.getElementById("game");
+  console.log("The end is near!!!!111one");
+  console.log("Correctly painted percentage: " + arg);
+  arg = arg * 100;
 
   let percentage = Math.round(arg);
 
@@ -64,8 +61,7 @@ socket.on("endgame", (arg) => {
   <button>Spela igen</button>`;
 
   //window.alert("Correctly painted percentage: "+arg+"%")
-
-})
+});
 //shows image for 5 secs and then clear board
 function showPreview(image) {
   for (let i = 0; i < image.length; i++) {
