@@ -9,7 +9,6 @@ const mysql = require("mysql2");
 const connection = require("./conn");
 require("dotenv").config();
 
-
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const imagesRouter = require("./routes/images");
@@ -17,7 +16,7 @@ const picsRouter = require("./routes/pics");
 
 let currentGameBoard = [[]];
 let chosenGameBoard = [[]];
-for (let j = 0;j<15;j++) {
+for (let j = 0; j < 15; j++) {
   currentGameBoard[j] = [];
 }
 app.get("/", (req, res) => {
@@ -59,12 +58,12 @@ io.on("connection", (socket) => {
 
   socket.on("paint", (arg) => {
     io.emit("paint", arg);
-    console.log("Somebody painted something on: ")
-    console.log(arg)
-    let x = arg.id.split('-');
-    console.log(x)
-    currentGameBoard[x[0]][x[1]] = arg.paint
-    console.log(currentGameBoard)
+    console.log("Somebody painted something on: ");
+    console.log(arg);
+    let x = arg.id.split("-");
+    console.log(x);
+    currentGameBoard[x[0]][x[1]] = arg.paint;
+    console.log(currentGameBoard);
   });
 
   socket.on("chat", (arg) => {
@@ -79,34 +78,27 @@ io.on("connection", (socket) => {
       connection.query(sql, (error, results) => {
         if (error) {
           console.error(error);
-          console.log("Oh noes!")
+          console.log("Oh noes!");
         } else {
-          io.emit('startgame', results[0])
+          io.emit("startgame", results[0]);
           chosenGameBoard = results[0]["picture-array"];
-          console.log(chosenGameBoard)
+          console.log(chosenGameBoard);
         }
       });
     } catch (error) {
-      console.log("Oh noes!")
+      console.log("Oh noes!");
     }
-    
+
     setTimeout(() => {
-      console.log("Now comes the end of time...")
-      let percentage = compareArrays(currentGameBoard, chosenGameBoard)
-      console.log("Percentage right was: "+percentage)
+      console.log("Now comes the end of time...");
+      let percentage = compareArrays(currentGameBoard, chosenGameBoard);
+      console.log("Percentage right was: " + percentage);
 
-      io.emit('endgame', percentage)
-
+      io.emit("endgame", percentage);
     }, 65000);
-
-
-
-
 
     //io.emit("chat", arg);
   });
-
-
 });
 
 // RENDER PLAYERS //
@@ -154,16 +146,14 @@ function compareArrays(array1, array2) {
   const length = array1.length;
   let counter = 0;
 
-  for(let i = 0; i < length; i++) {
-      for (let j = 0; j < length; j++){
-          if (array1[i][j] === array2[i][j]) {
-              counter++
-          } 
+  for (let i = 0; i < length; i++) {
+    for (let j = 0; j < length; j++) {
+      if (array1[i][j] === array2[i][j]) {
+        counter++;
       }
-
+    }
   }
 
-  const percentage = counter/(array1.length*array1.length);
+  const percentage = counter / (array1.length * array1.length);
   return percentage;
 }
-
