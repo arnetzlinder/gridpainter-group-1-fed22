@@ -109,6 +109,33 @@ io.on("connection", (socket) => {
 
 });
 
+// RENDER PLAYERS //
+
+const players = [];
+
+io.on("connection", (socket) => {
+  console.log("a user connected");
+
+  socket.on("new-player", (userName) => {
+    console.log(`New player joined: ${userName}`);
+
+    players.push(userName);
+
+    io.emit("player-list", players);
+  });
+
+  socket.on("disconnect", () => {
+    console.log("a user disconnected");
+
+    const index = players.findIndex((player) => player.id === socket.id);
+    if (index !== -1) {
+      players.splice(index, 1);
+    }
+
+    io.emit("player-list", players);
+  });
+});
+
 server.listen(3000);
 
 app.use(cors());
@@ -122,7 +149,6 @@ app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/images", imagesRouter);
 app.use("/pics", picsRouter);
-
 
 function compareArrays(array1, array2) {
   const length = array1.length;
@@ -140,3 +166,4 @@ function compareArrays(array1, array2) {
   const percentage = counter/(array1.length*array1.length);
   return percentage;
 }
+
