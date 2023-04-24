@@ -52,10 +52,18 @@ socket.on("startgame", (arg) => {
 })
 
 socket.on("endgame", (arg) => {
+  let gameContainer = document.getElementById('game');
   console.log("The end is near!!!!111one")
   console.log("Correctly painted percentage: "+arg)
   arg = arg*100;
-  window.alert("Correctly painted percentage: "+arg+"%")
+
+  let percentage = Math.round(arg);
+
+  gameContainer.innerHTML = `
+  <h2>Ni fick ${percentage}% rätt</h2>
+  <button>Spela igen</button>`;
+
+  //window.alert("Correctly painted percentage: "+arg+"%")
 
 })
 //shows image for 5 secs and then clear board
