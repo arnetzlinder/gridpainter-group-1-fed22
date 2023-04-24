@@ -1,5 +1,4 @@
-import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
-const socket = io("http://localhost:3000");
+import { socket } from "./socket.js";
 const userContainer = document.getElementById("current-users");
 const gameboard = document.getElementById("game");
 
