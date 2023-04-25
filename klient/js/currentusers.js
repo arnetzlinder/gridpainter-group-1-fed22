@@ -1,5 +1,6 @@
 import { socket } from "./socket.js";
-const userContainer = document.getElementById("current-users");
+const userContainer = document.getElementById("users");
+
 const gameboard = document.getElementById("game");
 
 export function renderPlayersButton() {

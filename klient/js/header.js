@@ -1,57 +1,25 @@
-const headerContainer = document.getElementById("header");
+const headerContainer = document.getElementById("top-bar");
 import { renderPreviousGames } from "./recentGames.js";
 
 export function renderHeader() {
   let headerWrapper = document.createElement("div");
   headerWrapper.id = "header-wrapper";
 
-  let logoContainer = document.createElement("div");
-  logoContainer.id = "logo-container";
-
-  let logoText = document.createElement("h1");
-  logoText.id = "logo-text";
-  logoText.innerHTML = "Grid Painters";
-
   headerContainer.append(headerWrapper);
-  headerWrapper.append(logoContainer);
-  logoContainer.append(logoText);
 
-  let navContainer = document.createElement("div");
-  navContainer.id = "nav-container";
+  let timerAndScoreContainer = document.createElement("div");
+  timerAndScoreContainer.id = "timer-and-score-container";
 
-  let navButtons = document.createElement("div");
-  navButtons.id = "nav-buttons";
+  let timerContainer = document.createElement("div");
+  timerContainer.id = "timer-container";
 
-  let homeButton = document.createElement("button");
-  homeButton.id = "home-button";
-  homeButton.classList.add("navBtn");
-  homeButton.innerHTML = "Home";
+  let timer = document.createElement("p");
+  timer.id = "timerAndText";
+  timer.innerHTML = "";
 
-  homeButton.addEventListener("click", function () {
-    location.reload();
-  });
-
-  let profileButton = document.createElement("button");
-  profileButton.id = "profile-button";
-  profileButton.classList.add("navBtn");
-  profileButton.innerHTML = "Profile";
-
-  let myPicturesButton = document.createElement("button");
-  myPicturesButton.id = "scoreboard-button";
-  myPicturesButton.classList.add("navBtn");
-  myPicturesButton.innerHTML = "My Pictures";
-
-  myPicturesButton.addEventListener("click", function () {
-    gameFlex.innerHTML = "";
-
-    renderPreviousGames();
-  });
-
-  headerWrapper.append(navContainer);
-  navContainer.append(navButtons);
-  navButtons.append(homeButton);
-  navButtons.append(profileButton);
-  navButtons.append(myPicturesButton);
+  headerWrapper.append(timerAndScoreContainer);
+  timerAndScoreContainer.append(timerContainer);
+  timerContainer.append(timer);
 
   let logoutContainer = document.createElement("div");
   logoutContainer.id = "logout-container";
@@ -67,8 +35,18 @@ export function renderHeader() {
     welcomeText.innerText = `Welcome`;
   }
 
+  let previousGamesButton = document.createElement("button");
+  previousGamesButton.id = "previous-games-button";
+  previousGamesButton.classList.add("top-bar-button");
+  previousGamesButton.innerHTML = "Previous Games";
+
+  let buttonSpacer = document.createElement("p");
+  buttonSpacer.id = "button-spacer";
+  buttonSpacer.innerHTML = "|";
+
   let logoutButton = document.createElement("button");
   logoutButton.id = "logout-button";
+  logoutButton.classList.add("top-bar-button");
   logoutButton.innerHTML = "Logout";
 
   logoutButton.addEventListener("click", function () {
@@ -77,7 +55,9 @@ export function renderHeader() {
     location.reload();
   });
 
-  navContainer.append(logoutContainer);
-  logoutContainer.append(welcomeText);
+  headerWrapper.append(welcomeText);
+  headerWrapper.append(logoutContainer);
+  logoutContainer.append(previousGamesButton);
+  logoutContainer.append(buttonSpacer);
   logoutContainer.append(logoutButton);
 }

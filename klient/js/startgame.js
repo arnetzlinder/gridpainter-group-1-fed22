@@ -1,5 +1,4 @@
 import { socket } from "./socket.js";
-import { renderButtons } from "./pickcolor.js";
 
 //start game button
 export function renderStartBtn() {
@@ -23,7 +22,7 @@ socket.on("startgame", (arg) => {
   console.log("The server told us to strart the game with this image: ");
   console.log(arg);
   let image = JSON.parse(arg["picture-array"]);
-  
+
   for (let i = 0; i < image.length; i++) {
     const row = image[i];
     for (let j = 0; j < row.length; j++) {

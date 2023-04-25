@@ -2,14 +2,17 @@ import { socket } from "./socket.js";
 
 import { renderGameboard } from "./gameboard.js";
 import { renderGamechat } from "./gamechat.js";
+import { renderPlayingUsers } from "./currentusers.js";
 
 localStorage.removeItem("playerColor");
 
+let topBarText = document.getElementById("timerAndText");
 let cont = document.getElementById("pickColors");
+let gameboard = document.getElementById("game");
 
 export function renderColors() {
   cont.innerHTML = `
-  <button id="startBtn">Starta spel</button>
+  <button id="startBtn">Start Game</button>
   `;
 
   let startBtn = document.getElementById("startBtn");
@@ -34,6 +37,8 @@ export function renderColors() {
         color = "svart";
       }
       cont.innerHTML = `<p>Du har valt färgen ${color}</p>`;
+      // renderGameboard();
+      renderPlayingUsers();
     } else {
       colorsArr = arg;
       renderButtons(colorsArr);
@@ -41,14 +46,14 @@ export function renderColors() {
   });
 }
 
-export function renderButtons(colorsArr) {
+function renderButtons(colorsArr) {
   console.log(colorsArr);
   if (colorsArr.length < 1) {
     cont.innerHTML = "Alla färger är tagna";
     return;
   }
   cont.innerHTML = `
-  <h2>Välj en färg:</h2>
+  <h2>Pick a color</h2>
   <div id="colorsCont"></div>
   `;
 

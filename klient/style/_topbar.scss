@@ -1,0 +1,82 @@
+.top-bar {
+  background-color: #242424;
+  width: 1200px;
+  height: 50px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.top-bar p {
+  position: relative;
+  color: bisque;
+  text-align: center;
+  bottom: 10px;
+}
+
+#header-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  top: 16px;
+}
+
+#timer-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b0daff;
+  font-size: 1.2rem;
+  margin: 0;
+  margin-left: 24px;
+}
+
+#timer-container p {
+  align-items: center;
+  margin: 0;
+}
+
+#welcome-text {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b0daff;
+  font-size: 1.2rem;
+  margin: 0;
+  height: 30px;
+}
+
+#logout-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  margin-right: 24px;
+  color: whitesmoke;
+  bottom: 7px;
+}
+
+#button-spacer {
+  margin-left: 15px;
+  margin-right: 15px;
+  color: #b0daff;
+}
+
+.top-bar-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  font-size: 1.2rem;
+  color: #b0daff;
+}
+
+.top-bar-button:hover {
+  color: orange;
+}
