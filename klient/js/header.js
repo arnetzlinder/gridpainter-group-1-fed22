@@ -40,6 +40,13 @@ export function renderHeader() {
   previousGamesButton.classList.add("top-bar-button");
   previousGamesButton.innerHTML = "Previous Games";
 
+  previousGamesButton.addEventListener("click", function () {
+    const mainContainer = document.getElementById("main-container");
+    mainContainer.innerHTML = "";
+
+    renderPreviousGames();
+  });
+
   let buttonSpacer = document.createElement("p");
   buttonSpacer.id = "button-spacer";
   buttonSpacer.innerHTML = "|";

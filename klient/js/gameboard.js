@@ -2,9 +2,8 @@ import { socket } from "./socket.js";
 
 import { renderGamechat } from "./gamechat.js";
 import { renderStartBtn } from "./startgame.js";
-import { renderSaveButton } from "./pictures.js";
+// import { renderSaveButton } from "./pictures.js";
 import { renderPlayersButton } from "./currentusers.js";
-import { startTimerButton } from "./timer.js";
 
 export function renderGameboard() {
   renderGamechat();
@@ -43,5 +42,3 @@ export function renderGameboard() {
   });
   renderStartBtn();
 }
-
-

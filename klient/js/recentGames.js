@@ -9,4 +9,15 @@ export function renderPreviousGames() {
   mainContainer.append(pictureContainer);
 
   renderPictures();
+
+  let backButton = document.createElement("button");
+  backButton.id = "back-button";
+  backButton.classList.add("return-button");
+  backButton.innerHTML = "Return";
+
+  backButton.addEventListener("click", function () {
+    location.reload();
+  });
+
+  mainContainer.append(backButton);
 }
