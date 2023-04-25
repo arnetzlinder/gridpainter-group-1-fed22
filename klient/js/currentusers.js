@@ -62,8 +62,12 @@ export function renderPlayingUsers() {
   socket.off("player-list", handlePlayerList);
   socket.on("player-list", handlePlayerList);
 
+  let userColor = localStorage.getItem('playerColor');
+  console.log(userColor)
+
   let userName = localStorage.getItem("userName");
-  socket.emit("new-player", userName);
+
+  socket.emit("new-player", (userName + ' - ' + userColor));
 
   userContainer.setAttribute("data-rendered", "true");
 }
