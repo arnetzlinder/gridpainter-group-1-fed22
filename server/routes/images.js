@@ -7,14 +7,12 @@ router.get("/random", (_, res) => {
     const sql = "SELECT * FROM `examplepicture` ORDER BY RAND() LIMIT 1";
     connection.query(sql, (error, results) => {
       if (error) {
-        console.error(error);
         res.status(500).send("Server error");
       } else {
         res.send(results[0]);
       }
     });
   } catch (error) {
-    console.error(error);
     res.status(500).send("Server error");
   }
 });

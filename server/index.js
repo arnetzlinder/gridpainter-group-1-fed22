@@ -45,8 +45,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("removeColor", (arg) => {
-    console.log(arg);
-    //io.emit("entering", startBtns);
     const index = startBtns.indexOf(arg.button);
 
     if (index > -1) {
@@ -58,12 +56,8 @@ io.on("connection", (socket) => {
 
   socket.on("paint", (arg) => {
     io.emit("paint", arg);
-    console.log("Somebody painted something on: ");
-    console.log(arg);
     let x = arg.id.split("-");
-    console.log(x);
     currentGameBoard[x[0]][x[1]] = arg.paint;
-    console.log(currentGameBoard);
   });
 
   socket.on("chat", (arg) => {
@@ -71,18 +65,15 @@ io.on("connection", (socket) => {
     io.emit("chat", arg);
   });
   socket.on("startgame", (arg) => {
-    console.log("Time to start the game!");
     // selecxt a random image from tha databas
     try {
       const sql = "SELECT * FROM `examplepicture` ORDER BY RAND() LIMIT 1";
       connection.query(sql, (error, results) => {
         if (error) {
           console.error(error);
-          console.log("Oh noes!");
         } else {
           io.emit("startgame", results[0]);
           chosenGameBoard = JSON.parse(results[0]["picture-array"]);
-          console.log(chosenGameBoard);
         }
       });
     } catch (error) {
@@ -92,7 +83,6 @@ io.on("connection", (socket) => {
     setTimeout(() => {
       console.log("Now comes the end of time...");
       let percentage = compareArrays(currentGameBoard, chosenGameBoard);
-      console.log("Percentage right was: " + percentage);
       for (let j = 0; j < 15; j++) {
         currentGameBoard[j] = [];
       }
@@ -122,10 +112,8 @@ io.on("connection", (socket) => {
 const players = [];
 
 io.on("connection", (socket) => {
-  console.log("a user connected");
 
   socket.on("new-player", (userName) => {
-    console.log(`New player joined: ${userName}`);
 
     players.push(userName);
 
@@ -133,7 +121,6 @@ io.on("connection", (socket) => {
   });
 
   socket.on("disconnect", () => {
-    console.log("a user disconnected");
 
     const index = players.findIndex((player) => player.id === socket.id);
     if (index !== -1) {

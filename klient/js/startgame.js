@@ -7,7 +7,7 @@ let gameContainer = document.getElementById("game");
 export function renderStartBtn() {
   const gameboard = document.getElementById("game");
   const startGameBtn = document.createElement("button");
-  startGameBtn.innerText = "STARTA SPEL";
+  startGameBtn.innerText = "START GAME";
   startGameBtn.classList.add("startGameBtn");
 
   gameboard.appendChild(startGameBtn);
@@ -22,8 +22,6 @@ async function startGame() {
 }
 
 socket.on("startgame", (arg) => {
-  console.log("The server told us to strart the game with this image: ");
-  console.log(arg);
   let image = JSON.parse(arg["picture-array"]);
 
   for (let i = 0; i < image.length; i++) {
@@ -45,32 +43,22 @@ socket.on("startgame", (arg) => {
 });
 
 socket.on("endgame", (arg) => {
-  // let gameContainer = document.getElementById("game");
-  console.log("The end is near!!!!111one");
-  console.log("Correctly painted percentage: " + arg);
+
   arg = arg * 100;
 
   let percentage = Math.round(arg);
 
   gameContainer.innerHTML = `
-  <h2>Ni fick ${percentage}% rätt</h2>
-  <button id="playAgainBtn">Spela igen</button>`;
+  <h2>You were ${percentage}% right</h2>
+  <button id="playAgainBtn">Play again</button>`;
 
   //play again event
   playAgainBtn.addEventListener("click", () => {
     socket.emit("playAgain");
-    //location.reload();
   });
-
-  //window.alert("Correctly painted percentage: "+arg+"%")
 });
 
 // play again listener
 socket.on("playAgain", (startBtns) => {
-  console.log('works')
-  // let gameContainer = document.getElementById("game");
-  // gameContainer.innerHTML = "";
-  //renderColors()
-  //renderButtons(startBtns);
   location.reload()
 });

@@ -13,11 +13,8 @@ router.get("/", async function (req, res) {
   try {
     const sql = "SELECT * FROM gamepictures WHERE user_id = ?";
     const values = [user_id];
-    console.log("sql: ", sql);
-    console.log("values: ", values);
     connection.query(sql, values, async (error, results) => {
       if (error) {
-        console.error(error);
         res.status(500).send("Server error");
       } else {
         const pictures = results.map((result) => {
@@ -52,14 +49,12 @@ router.post("/save", async function (req, res) {
     const values = [user_id, pictureBuffer];
     connection.query(sql, values, (error, results) => {
       if (error) {
-        console.error(error);
         res.status(500).send("Server error");
       } else {
         res.status(200).send("Image saved successfully.");
       }
     });
   } catch (err) {
-    console.error(err);
     res.status(500).send("Server error");
   }
 });
