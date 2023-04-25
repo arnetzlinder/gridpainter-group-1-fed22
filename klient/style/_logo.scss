@@ -10,7 +10,7 @@
   margin-top: 40px;
 }
 
-img {
+.logo-image-big {
   width: 250px;
 }
 
@@ -24,6 +24,39 @@ img {
 .logo-text-two {
   position: relative;
   font-size: 4rem;
-  top: 80px;
+  top: 30px;
   right: 180px;
+}
+
+// LOGIN PAGE LOGO //
+
+#logo-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 40px;
+  left: 8px;
+  bottom: 14px;
+}
+
+.logo-image-small {
+  width: 130px;
+}
+
+#login-logo-text-wrapper {
+  position: relative;
+  top: 10px;
+  font-family: "Courgette", cursive;
+}
+
+.login-logo-text-one {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.login-logo-text-two {
+  position: relative;
+  font-size: 2rem;
+  margin: 0;
+  right: 18px;
 }
