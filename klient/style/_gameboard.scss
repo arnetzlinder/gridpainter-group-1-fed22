@@ -30,6 +30,42 @@ $colsize: 43px;
   background-color: rgb(90, 222, 174);
 }
 
+.userlist_brown {
+  background-color: rgb(75, 29, 29);
+  width:30px;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 5px;
+}
+
+.userlist_black {
+  background-color: black;
+  width:30px;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 5px;
+}
+
+.userlist_yellow {
+  background-color: yellow;
+  width:30px;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 5px;
+}
+
+.userlist_red {
+  background-color: red;
+  width:30px;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 5px;
+}
+
+.player-container {
+  display: flex;
+}
+
 // RENDER PICTURE PAGE //
 
 .return-button {

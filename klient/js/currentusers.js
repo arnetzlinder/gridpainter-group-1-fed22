@@ -35,7 +35,7 @@ export function renderPlayingUsers() {
     players.forEach((player, index) => {
       let playerContainer = document.createElement("div");
       playerContainer.classList.add("player-container");
-      playerContainer.innerHTML = player;
+      playerContainer.innerHTML = "<div class=userlist_"+player.userColor+"></div>"+player.userName
 
       if (index === 0) {
         playerContainer.id = "player-one-container";
@@ -67,7 +67,7 @@ export function renderPlayingUsers() {
 
   let userName = localStorage.getItem("userName");
 
-  socket.emit("new-player", (userName + ' - ' + userColor));
+  socket.emit("new-player", ({'userName': userName, 'userColor': userColor} ));
 
   userContainer.setAttribute("data-rendered", "true");
 }
