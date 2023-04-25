@@ -8,7 +8,7 @@ export function renderGamechat() {
   <div id="inputWrapper">
   <form id="chat-form"> 
   <input type="text" id="messageInput">
-  <button id="sendMsgBtn">Skicka</button>
+  <button id="sendMsgBtn">Send</button>
   </form>
   </div>`;
 

@@ -98,7 +98,4 @@ export function renderButtons(colorsArr) {
   });
 }
 
-// function hideColors() {
-//   cont.innerHTML = "";
-//   //let colorsCont = document.getElementById("colorsCont");
-// }
+

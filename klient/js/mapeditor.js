@@ -39,21 +39,21 @@ let color = 'yellow';
 
 brownBtn.addEventListener('click', () => {
     color = 'brown'
-    console.log ('någon klickade', color)
+    console.log ('Someone clicked', color)
 })
 blackBtn.addEventListener('click', () => {
     color = 'black'
-    console.log ('någon klickade', color)
+    console.log ('Someone clicked', color)
 })
 
 yellowBtn.addEventListener('click', () => {
     color = 'yellow'
-    console.log ('någon klickade', color)
+    console.log ('Someone clicked', color)
 })
 
 redBtn.addEventListener('click', () => {
     color = 'red'
-    console.log ('någon klickade', color)
+    console.log ('Someone clicked', color)
 })
 
 saveBtn.addEventListener('click', () => {

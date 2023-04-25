@@ -44,6 +44,4 @@ export function renderGameboard() {
   renderStartBtn();
 }
 
-// renderSaveButton();
-// renderPlayersButton();
-// startTimerButton();
+
