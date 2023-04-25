@@ -11,6 +11,7 @@ let cont = document.getElementById("pickColors");
 let gameboard = document.getElementById("game");
 
 export function renderColors() {
+  let cont = document.getElementById("pickColors");
   cont.innerHTML = `
   <button id="startBtn">Start Game</button>
   `;
@@ -46,7 +47,7 @@ export function renderColors() {
   });
 }
 
-function renderButtons(colorsArr) {
+export function renderButtons(colorsArr) {
   console.log(colorsArr);
   if (colorsArr.length < 1) {
     cont.innerHTML = "Alla färger är tagna";
@@ -97,6 +98,7 @@ function renderButtons(colorsArr) {
   });
 }
 
-function hideColors() {
-  cont.innerHTML = "";
-}
+// function hideColors() {
+//   cont.innerHTML = "";
+//   //let colorsCont = document.getElementById("colorsCont");
+// }

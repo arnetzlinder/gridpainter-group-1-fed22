@@ -1,4 +1,7 @@
 import { socket } from "./socket.js";
+import { renderButtons } from "./pickcolor.js";
+
+let gameContainer = document.getElementById("game");
 
 //start game button
 export function renderStartBtn() {
@@ -42,7 +45,7 @@ socket.on("startgame", (arg) => {
 });
 
 socket.on("endgame", (arg) => {
-  let gameContainer = document.getElementById("game");
+  // let gameContainer = document.getElementById("game");
   console.log("The end is near!!!!111one");
   console.log("Correctly painted percentage: " + arg);
   arg = arg * 100;
@@ -56,6 +59,7 @@ socket.on("endgame", (arg) => {
   //play again event
   playAgainBtn.addEventListener("click", () => {
     socket.emit("playAgain");
+    //location.reload();
   });
 
   //window.alert("Correctly painted percentage: "+arg+"%")
@@ -63,7 +67,10 @@ socket.on("endgame", (arg) => {
 
 // play again listener
 socket.on("playAgain", (startBtns) => {
-  let gameContainer = document.getElementById("game");
-  gameContainer.innerHTML = "";
-  renderButtons(startBtns);
+  console.log('works')
+  // let gameContainer = document.getElementById("game");
+  // gameContainer.innerHTML = "";
+  //renderColors()
+  //renderButtons(startBtns);
+  location.reload()
 });
