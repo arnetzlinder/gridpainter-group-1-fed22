@@ -1,24 +1,21 @@
 const timerContainer = document.getElementById("timer-container");
 
-export function startTimerButton() {
-  const startTimerBtn = document.createElement("button");
-  startTimerBtn.classList.add("start-timer-btn");
-  startTimerBtn.id = "start-timer-btn";
-  startTimerBtn.innerText = "Start timer";
-  timerContainer.appendChild(startTimerBtn);
+// export function startTimerButton() {
+//   const startTimerBtn = document.createElement("button");
+//   startTimerBtn.classList.add("start-timer-btn");
+//   startTimerBtn.id = "start-timer-btn";
+//   startTimerBtn.innerText = "Start timer";
+//   timerContainer.appendChild(startTimerBtn);
 
-  startTimerBtn.addEventListener("click", renderTimer);
-}
+//   startTimerBtn.addEventListener("click", renderTimer);
+// }
 
 export function renderTimer() {
-  const timer = document.createElement("div");
-  timer.classList.add("timer");
-  timer.id = "timer";
-  timerContainer.append(timer);
+  const timerCont = document.getElementById("timer-and-score-container");
 
   const timerText = document.createElement("p");
   timerText.id = "timer-text";
-  timer.append(timerText);
+  timerCont.append(timerText);
 
   startTimer();
 }

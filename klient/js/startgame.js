@@ -1,5 +1,7 @@
 import { socket } from "./socket.js";
 import { renderButtons } from "./pickcolor.js";
+import { renderTimer } from "./timer.js";
+import { timeToSaveImage } from "./pictures.js";
 
 let gameContainer = document.getElementById("game");
 
@@ -12,7 +14,15 @@ export function renderStartBtn() {
 
   gameboard.appendChild(startGameBtn);
 
-  startGameBtn.addEventListener("click", startGame);
+  // startGameBtn.addEventListener("click", startGame);
+  startGameBtn.addEventListener("click", function () {
+    startGame();
+    renderTimer();
+    setTimeout(() => {
+      timeToSaveImage();
+    }, 59000);
+    // timeToSaveImage();
+  });
 }
 
 //start game function
@@ -43,7 +53,6 @@ socket.on("startgame", (arg) => {
 });
 
 socket.on("endgame", (arg) => {
-
   arg = arg * 100;
 
   let percentage = Math.round(arg);
@@ -60,5 +69,5 @@ socket.on("endgame", (arg) => {
 
 // play again listener
 socket.on("playAgain", (startBtns) => {
-  location.reload()
+  location.reload();
 });

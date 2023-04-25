@@ -72,11 +72,19 @@ export function saveImage(dataURL) {
     });
 }
 
-export function timeToSaveImage() {
-  let gameBoard = document.getElementById("game");
+export function renderSaveButton() {
+  let saveImageButton = document.createElement("button");
+  saveImageButton.id = "save-image-button";
+  saveImageButton.innerHTML = "Save Image";
 
-  html2canvas(gameBoard).then(function (canvas) {
-    let dataURL = canvas.toDataURL();
-    saveImage(dataURL);
+  saveImageButton.addEventListener("click", function () {
+    let gameBoard = document.getElementById("game");
+
+    html2canvas(gameBoard).then(function (canvas) {
+      let dataURL = canvas.toDataURL();
+      saveImage(dataURL);
+    });
   });
+
+  gameboard.append(saveImageButton);
 }
