@@ -11,7 +11,7 @@ let cont = document.getElementById("pickColors");
 export function renderColors() {
   let cont = document.getElementById("pickColors");
   cont.innerHTML = `
-  <button id="startBtn">Start Game</button>
+  <button id="startBtn">Join Game</button>
   `;
 
   let startBtn = document.getElementById("startBtn");
@@ -25,9 +25,9 @@ export function renderColors() {
   socket.on("entering", (arg) => {
     let userColor = localStorage.getItem("playerColor");
     if (userColor) {
-    cont.innerHTML = ``;
-    renderPlayingUsers();
-     } else {
+      cont.innerHTML = ``;
+      renderPlayingUsers();
+    } else {
       colorsArr = arg;
       renderButtons(colorsArr);
     }
@@ -85,5 +85,3 @@ export function renderButtons(colorsArr) {
     });
   });
 }
-
-

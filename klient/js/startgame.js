@@ -11,16 +11,18 @@ export function renderStartBtn() {
   const startGameBtn = document.createElement("button");
   startGameBtn.innerText = "START GAME";
   startGameBtn.classList.add("startGameBtn");
+  startGameBtn.disabled = true;
 
   gameboard.appendChild(startGameBtn);
 
   startGameBtn.addEventListener("click", function () {
-    renderGameboard();
     startGame();
-    renderTimer();
     setTimeout(() => {
       timeToSaveImage();
     }, 59000);
+  });
+  socket.on("activate-startBtn", () => {
+    startGameBtn.disabled = false;
   });
 }
 
@@ -31,7 +33,8 @@ async function startGame() {
 
 socket.on("startgame", (arg) => {
   let image = JSON.parse(arg["picture-array"]);
-
+  renderGameboard();
+  renderTimer();
   for (let i = 0; i < image.length; i++) {
     const row = image[i];
     for (let j = 0; j < row.length; j++) {
