@@ -1,6 +1,7 @@
 import { socket } from "./socket.js";
 import { renderTimer } from "./timer.js";
 import { timeToSaveImage } from "./pictures.js";
+import { renderGameboard } from "./gameboard.js";
 
 let gameContainer = document.getElementById("game");
 
@@ -14,6 +15,7 @@ export function renderStartBtn() {
   gameboard.appendChild(startGameBtn);
 
   startGameBtn.addEventListener("click", function () {
+    renderGameboard();
     startGame();
     renderTimer();
     setTimeout(() => {
@@ -24,7 +26,6 @@ export function renderStartBtn() {
 
 //start game function
 async function startGame() {
-  // plz start the game!
   socket.emit("startgame");
 }
 
