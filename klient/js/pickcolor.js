@@ -1,14 +1,12 @@
 import { socket } from "./socket.js";
 
-import { renderGameboard } from "./gameboard.js";
 import { renderGamechat } from "./gamechat.js";
 import { renderPlayingUsers } from "./currentusers.js";
+import { renderStartBtn } from "./startgame.js";
 
 localStorage.removeItem("playerColor");
 
-let topBarText = document.getElementById("timerAndText");
 let cont = document.getElementById("pickColors");
-let gameboard = document.getElementById("game");
 
 export function renderColors() {
   let cont = document.getElementById("pickColors");
@@ -27,20 +25,9 @@ export function renderColors() {
   socket.on("entering", (arg) => {
     let userColor = localStorage.getItem("playerColor");
     if (userColor) {
-      let color;
-      if (userColor == "red") {
-        color = "röd";
-      } else if (userColor == "yellow") {
-        color = "gul";
-      } else if (userColor == "brown") {
-        color = "brun";
-      } else {
-        color = "svart";
-      }
-      cont.innerHTML = `<p>Du har valt färgen ${color}</p>`;
-      // renderGameboard();
-      renderPlayingUsers();
-    } else {
+    cont.innerHTML = ``;
+    renderPlayingUsers();
+     } else {
       colorsArr = arg;
       renderButtons(colorsArr);
     }
@@ -70,7 +57,8 @@ export function renderButtons(colorsArr) {
     button.addEventListener("click", (e) => {
       let pickedArray = [];
 
-      renderGameboard();
+      //renderGameboard();
+      renderStartBtn();
 
       if (e.target.id == "btn-0") {
         localStorage.setItem("playerColor", "red");
