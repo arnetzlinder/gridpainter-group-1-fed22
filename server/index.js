@@ -88,7 +88,7 @@ io.on("connection", (socket) => {
       }
 
       io.emit("endgame", percentage);
-    }, 200);
+    }, 5000);
 
     //io.emit("chat", arg);
   });
@@ -116,6 +116,10 @@ let players = [];
 io.on("connection", (socket) => {
   socket.on("new-player", (userName) => {
     players.push(userName);
+
+    if (players.length === 4) {
+      io.emit("activate-startBtn");
+    }
 
     io.emit("player-list", players);
   });
