@@ -102,26 +102,25 @@ io.on("connection", (socket) => {
       '<button id="btn-2" class="colorBtn">',
       '<button id="btn-3" class="colorBtn">',
     ];
+    // reset player list
+    players = [];
     //emit play again to all clients
-    io.emit("playAgain", startBtns);
+    io.emit("playAgain");
   });
 });
 
 // RENDER PLAYERS //
 
-const players = [];
+let players = [];
 
 io.on("connection", (socket) => {
-
   socket.on("new-player", (userName) => {
-
     players.push(userName);
 
     io.emit("player-list", players);
   });
 
   socket.on("disconnect", () => {
-
     const index = players.findIndex((player) => player.id === socket.id);
     if (index !== -1) {
       players.splice(index, 1);
