@@ -1,9 +1,9 @@
 import { socket } from "./socket.js";
 
 import { renderGamechat } from "./gamechat.js";
-import { renderStartBtn } from "./startgame.js";
+
 // import { renderSaveButton } from "./pictures.js";
-import { renderPlayersButton } from "./currentusers.js";
+//import { renderPlayersButton } from "./currentusers.js";
 
 export function renderGameboard() {
   renderGamechat();
@@ -40,5 +40,4 @@ export function renderGameboard() {
     cell.classList.add(arg.paint);
     console.log("Received cell paint event", arg.paint);
   });
-  renderStartBtn();
 }

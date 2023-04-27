@@ -1,14 +1,6 @@
 $gameboardSize: 15;
 $colsize: 43px;
 
-//.game {
-// display: grid;
-// grid-template-columns: repeat($gameboardSize, $colsize);
-// grid-template-rows: repeat($gameboardSize, $colsize);
-// width: 600px;
-// height: 600px;
-//}
-
 .row {
   display: flex;
 }
@@ -24,7 +16,7 @@ $colsize: 43px;
   background-color: black;
 }
 
-.startGameBtn {
+.startGameBtn, #playAgainBtn, .return-button {
   @include baseButton;
   margin: 1em;
   background-color: rgb(90, 222, 174);
@@ -69,10 +61,7 @@ $colsize: 43px;
 // RENDER PICTURE PAGE //
 
 .return-button {
-  all: initial;
   position: fixed;
-  bottom: 635px;
+  bottom: 500px;
   right: 440px;
-  font-size: 2.5rem;
-  cursor: pointer;
 }

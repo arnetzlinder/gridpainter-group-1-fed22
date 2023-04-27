@@ -11,15 +11,16 @@ export function renderStartBtn() {
   const startGameBtn = document.createElement("button");
   startGameBtn.innerText = "START GAME";
   startGameBtn.classList.add("startGameBtn");
+  startGameBtn.id = "startGameBtn";
   startGameBtn.disabled = true;
 
   gameboard.appendChild(startGameBtn);
 
   startGameBtn.addEventListener("click", function () {
     startGame();
-    setTimeout(() => {
-      timeToSaveImage();
-    }, 59000);
+    // setTimeout(() => {
+    //   timeToSaveImage();
+    // }, 58500);
   });
   socket.on("activate-startBtn", () => {
     startGameBtn.disabled = false;
@@ -35,6 +36,8 @@ socket.on("startgame", (arg) => {
   let image = JSON.parse(arg["picture-array"]);
   renderGameboard();
   renderTimer();
+  hideStartBtn();
+
   for (let i = 0; i < image.length; i++) {
     const row = image[i];
     for (let j = 0; j < row.length; j++) {
@@ -53,11 +56,16 @@ socket.on("startgame", (arg) => {
   }, 5000);
 });
 
+function hideStartBtn() {
+  const startGameBtn = document.getElementById("startGameBtn");
+  startGameBtn.remove();
+}
+
 socket.on("endgame", (arg) => {
   arg = arg * 100;
 
   let percentage = Math.round(arg);
-
+  timeToSaveImage();
   gameContainer.innerHTML = `
   <h2>You were ${percentage}% right</h2>
   <button id="playAgainBtn">Play again</button>`;
@@ -66,6 +74,8 @@ socket.on("endgame", (arg) => {
   playAgainBtn.addEventListener("click", () => {
     socket.emit("playAgain");
   });
+ 
+
 });
 
 // play again listener
