@@ -7,6 +7,7 @@ import { renderStartBtn } from "./startgame.js";
 localStorage.removeItem("playerColor");
 
 let cont = document.getElementById("pickColors");
+let messageCont = document.getElementById("message");
 
 export function renderColors() {
   let cont = document.getElementById("pickColors");
@@ -19,7 +20,8 @@ export function renderColors() {
 
   startBtn.addEventListener("click", () => {
     socket.emit("entering");
-    renderGamechat();
+      //renderGamechat();
+    //}
   });
 
   socket.on("entering", (arg) => {
@@ -27,19 +29,24 @@ export function renderColors() {
     if (userColor) {
       cont.innerHTML = ``;
       renderPlayingUsers();
+      renderGamechat();
     } else {
-      colorsArr = arg;
-      renderButtons(colorsArr);
+      if(arg.length >= 1){
+        colorsArr = arg;
+        renderButtons(colorsArr);
+        renderGamechat();
+      } else{
+      cont.innerHTML = "";
+      messageCont.innerHTML = `<h2>The game is full</h2>`
+      return
+      }
     }
   });
 }
 
 export function renderButtons(colorsArr) {
+
   console.log(colorsArr);
-  if (colorsArr.length < 1) {
-    cont.innerHTML = "Alla färger är tagna";
-    return;
-  }
   cont.innerHTML = `
   <h2>Pick a color</h2>
   <div id="colorsCont"></div>
@@ -57,7 +64,6 @@ export function renderButtons(colorsArr) {
     button.addEventListener("click", (e) => {
       let pickedArray = [];
 
-      //renderGameboard();
       renderStartBtn();
 
       if (e.target.id == "btn-0") {
