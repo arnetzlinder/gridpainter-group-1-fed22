@@ -86,25 +86,24 @@ io.on("connection", (socket) => {
       for (let j = 0; j < 15; j++) {
         currentGameBoard[j] = [];
       }
+      //reset color buttons
+      startBtns = [
+        '<button id="btn-0" class="colorBtn">',
+        '<button id="btn-1" class="colorBtn">',
+        '<button id="btn-2" class="colorBtn">',
+        '<button id="btn-3" class="colorBtn">',
+      ];
+      // reset player list
+      players = [];
 
       io.emit("endgame", percentage);
-    }, 5000);
+    }, 30000);
 
     //io.emit("chat", arg);
   });
 
   //play again listener
   socket.on("playAgain", () => {
-    //reset color buttons
-    startBtns = [
-      '<button id="btn-0" class="colorBtn">',
-      '<button id="btn-1" class="colorBtn">',
-      '<button id="btn-2" class="colorBtn">',
-      '<button id="btn-3" class="colorBtn">',
-    ];
-    // reset player list
-    players = [];
-    //emit play again to all clients
     io.emit("playAgain");
   });
 });
@@ -124,15 +123,15 @@ io.on("connection", (socket) => {
     io.emit("player-list", players);
   });
 
-  socket.on("disconnect", () => {
-    const index = players.findIndex((player) => player.id === socket.id);
-    if (index !== -1) {
-      players.splice(index, 1);
-    }
+  // socket.on("disconnect", () => {
+  //   const index = players.findIndex((player) => player.id === socket.id);
+  //   if (index !== -1) {
+  //     players.splice(index, 1);
+  //   }
 
-    io.emit("player-list", players);
-  });
+  io.emit("player-list", players);
 });
+//});
 
 server.listen(3000);
 
