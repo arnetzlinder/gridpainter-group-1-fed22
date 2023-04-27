@@ -37,7 +37,7 @@ export function renderColors() {
         let startGameButton = document.querySelector('.startGameBtn')
         if(!startGameButton){
           cont.innerHTML = "";
-          messageCont.innerHTML = `<h2>Sorry, the game is full</h2>`
+          messageCont.innerHTML = `<h2 class="game-full">Sorry, the game is full</h2>`
           return
         }
       }
