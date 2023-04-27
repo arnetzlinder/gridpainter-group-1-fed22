@@ -11,6 +11,7 @@ export function renderStartBtn() {
   const startGameBtn = document.createElement("button");
   startGameBtn.innerText = "START GAME";
   startGameBtn.classList.add("startGameBtn");
+  startGameBtn.id = "startGameBtn";
   startGameBtn.disabled = true;
 
   gameboard.appendChild(startGameBtn);
@@ -35,6 +36,8 @@ socket.on("startgame", (arg) => {
   let image = JSON.parse(arg["picture-array"]);
   renderGameboard();
   renderTimer();
+  hideStartBtn();
+
   for (let i = 0; i < image.length; i++) {
     const row = image[i];
     for (let j = 0; j < row.length; j++) {
@@ -52,6 +55,11 @@ socket.on("startgame", (arg) => {
     });
   }, 5000);
 });
+
+function hideStartBtn() {
+  const startGameBtn = document.getElementById("startGameBtn");
+  startGameBtn.remove();
+}
 
 socket.on("endgame", (arg) => {
   arg = arg * 100;
