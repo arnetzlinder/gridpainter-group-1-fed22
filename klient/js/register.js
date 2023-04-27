@@ -51,7 +51,7 @@ export function renderRegister() {
       userEmail: emailInput.value,
     };
 
-    fetch("http://localhost:3000/register", {
+    fetch("http://gridpainters.com:3000/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
