@@ -24,7 +24,7 @@ $colsize: 43px;
   background-color: black;
 }
 
-.startGameBtn {
+.startGameBtn, #playAgainBtn {
   @include baseButton;
   margin: 1em;
   background-color: rgb(90, 222, 174);
