@@ -20,8 +20,6 @@ export function renderColors() {
 
   startBtn.addEventListener("click", () => {
     socket.emit("entering");
-      //renderGamechat();
-    //}
   });
 
   socket.on("entering", (arg) => {
@@ -36,9 +34,12 @@ export function renderColors() {
         renderButtons(colorsArr);
         renderGamechat();
       } else{
-      cont.innerHTML = "";
-      messageCont.innerHTML = `<h2>The game is full</h2>`
-      return
+        let startGameButton = document.querySelector('.startGameBtn')
+        if(!startGameButton){
+          cont.innerHTML = "";
+          messageCont.innerHTML = `<h2>Sorry, the game is full</h2>`
+          return
+        }
       }
     }
   });
