@@ -99,6 +99,7 @@ io.on("connection", (socket) => {
       io.emit("endgame", percentage);
     }, 60000);
 
+
     //io.emit("chat", arg);
   });
 

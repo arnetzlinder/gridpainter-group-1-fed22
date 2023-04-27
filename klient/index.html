@@ -1,33 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style/style.css" />
-    <script src="js/main.js" defer type="module"></script>
-    <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-    <title>Gridpainter 1</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Susanne Arnetz Linder, Evelina Norlin, Nikolaj Nowicki, Veronica Bergström">
+  <meta name="keywords" content="Front End Developer, HTML, CSS, Javascript, API, MySql">
+  <meta property="og:title" content="Gridpainters - paint together">
+  <meta property="og:image" content="./images/gridpainters.png">
+  <meta property="og:url" content="http://gridpainters.com/">
+  <meta property="og:description" content="Front End-utvecklare som söker LIA hösten 2023. Kommer ut med kunskaper i React, Node.js, HTML, CSS, Javascript, Typescript, VUE, Cypress mm. Nås på LinkedIn">
+  <link rel="stylesheet" href="style/style.css" />
+  <script src="js/main.js" defer type="module"></script>
+  <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <title>Gridpainter 1</title>
+</head>
 
-  <body>
-    <div class="app-container">
-      <header id="header"></header>
+<body>
 
-      <div class="main-container" id="main-container">
-        <div class="top-bar" id="top-bar"></div>
+  <div class="app-container">
 
-        <div class="content-wrapper">
-          <div class="game" id="game">
-            <div id="pickColors"></div>
-          </div>
+    <header id="header">
+    </header>
+
+    <div class="main-container" id="main-container">
+
+      <div class="top-bar" id="top-bar"></div>
+
+      <div class="content-wrapper">
+        <div class="game" id="game">
+          <div id="pickColors"></div>
+        </div>
           <div id="message"></div>
           <chat-wrapper>
             <div class="chat" id="chatContainer"></div>
             <div class="users" id="users"></div>
           </chat-wrapper>
-        </div>
 
         <div class="bottom-bar"></div>
       </div>
