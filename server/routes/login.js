@@ -31,14 +31,12 @@ router.post("/", async function (req, res) {
           const token = jwt.sign(
             { user_id: user.user_id },
             process.env.JWT_SECRET,
-            console.log(process.env.JWT_SECRET)
           );
           res.status(200).send({ token });
         }
       }
     });
   } catch (err) {
-    console.error(err);
     res.status(500).send("Server error");
   }
 });

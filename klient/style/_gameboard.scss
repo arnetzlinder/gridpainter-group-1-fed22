@@ -1,25 +1,78 @@
 $gameboardSize: 15;
-$colsize: 50px;
+$colsize: 43px;
 
-.game {
-  display: grid;
-  grid-template-columns: repeat($gameboardSize, $colsize);
-  grid-template-rows: repeat($gameboardSize, $colsize);
-  width: 600px;
-}
+//.game {
+// display: grid;
+// grid-template-columns: repeat($gameboardSize, $colsize);
+// grid-template-rows: repeat($gameboardSize, $colsize);
+// width: 600px;
+// height: 600px;
+//}
 
 .row {
   display: flex;
 }
 
 .cell {
-  background-color: yellow;
+  background-color: white;
   width: $colsize;
   height: $colsize;
   border: 1px solid black;
 }
 
 .color {
-    background-color: black;
+  background-color: black;
 }
 
+.startGameBtn {
+  @include baseButton;
+  margin: 1em;
+  background-color: rgb(90, 222, 174);
+}
+
+.userlist_brown {
+  background-color: rgb(75, 29, 29);
+  width:30px;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 5px;
+}
+
+.userlist_black {
+  background-color: black;
+  width:30px;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 5px;
+}
+
+.userlist_yellow {
+  background-color: yellow;
+  width:30px;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 5px;
+}
+
+.userlist_red {
+  background-color: red;
+  width:30px;
+  height: 30px;
+  border-radius: 30px;
+  margin-top: 5px;
+}
+
+.player-container {
+  display: flex;
+}
+
+// RENDER PICTURE PAGE //
+
+.return-button {
+  all: initial;
+  position: fixed;
+  bottom: 635px;
+  right: 440px;
+  font-size: 2.5rem;
+  cursor: pointer;
+}

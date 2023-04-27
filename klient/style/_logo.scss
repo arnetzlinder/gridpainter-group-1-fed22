@@ -1,0 +1,62 @@
+.logo-container {
+  position: relative;
+  display: flex;
+  font-family: "Courgette", cursive;
+  color: #242424;
+  margin: 0 auto;
+  justify-self: center;
+  justify-content: center;
+  left: 80px;
+  margin-top: 40px;
+}
+
+.logo-image-big {
+  width: 250px;
+}
+
+.logo-text-one {
+  position: relative;
+  font-size: 4rem;
+  bottom: 40px;
+  right: 29px;
+}
+
+.logo-text-two {
+  position: relative;
+  font-size: 4rem;
+  top: 30px;
+  right: 180px;
+}
+
+// LOGIN PAGE LOGO //
+
+#logo-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 40px;
+  left: 8px;
+  bottom: 14px;
+}
+
+.logo-image-small {
+  width: 130px;
+}
+
+#login-logo-text-wrapper {
+  position: relative;
+  top: 10px;
+  font-family: "Courgette", cursive;
+}
+
+.login-logo-text-one {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.login-logo-text-two {
+  position: relative;
+  font-size: 2rem;
+  margin: 0;
+  right: 18px;
+}

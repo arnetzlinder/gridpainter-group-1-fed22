@@ -1,0 +1,169 @@
+.chat {
+  font-family: "Ubuntu-Italic", "Lucida Sans", helvetica, sans;
+}
+
+#inputWrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  // background-color: rgb(25, 25, 204);
+  top: 35px;
+}
+#messages {
+  position: relative;
+  width: 420px;
+  height: 400px;
+  // background-color: rgba(255, 255, 255, 0.616);
+  // border-top-left-radius: 14px;
+  // border-top-right-radius: 14px;
+  margin: 0 auto;
+  top: 20px;
+  overflow: auto;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 1.3rem;
+  padding-left: 60px;
+}
+
+#messages p {
+  margin-left: 14px;
+  margin-right: 14px;
+}
+
+#messages::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: none;
+}
+
+// #seperator {
+//   position: relative;
+//   height: 1px;
+//   width: 93%;
+//   background-color: #f1f1f131;
+//   margin: 0 auto;
+//   top: 20px;
+// }
+
+#messageInput {
+  position: relative;
+  top: 7px;
+  width: 300px;
+  margin-left: 15px;
+  outline: none;
+  background-color: transparent;
+  border: 0;
+  border-bottom: 1px solid #b0daff;
+  color: whitesmoke;
+  font-size: 1.1rem;
+}
+
+#sendMsgBtn {
+  width: 100px;
+  height: 38px;
+  font-size: 1.4rem;
+  background-color: #242424;
+  color: #b0daff;
+  border: 1px solid #b0daff;
+  margin-right: 15px;
+}
+
+.sender::before {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: -40px;
+  left: auto;
+  top: -8px;
+  bottom: auto;
+  border: 32px solid;
+  border-color: #2ea00b transparent transparent transparent;
+}
+
+.sender {
+  padding: 1px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  text-align: right;
+  color: blue;
+  align-self: flex-end;
+  max-width: 80%;
+  margin: 10px;
+  margin-left: 40px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: auto;
+  background-color: lightyellow;
+  border: 8px solid #2ea00b;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+}
+
+.sender::after {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: -20px;
+  left: auto;
+  top: 0px;
+  bottom: auto;
+  border: 22px solid;
+  border-color: lightyellow transparent transparent transparent;
+}
+
+.receiver {
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  border-radius: 5px;
+  text-align: left;
+  color: brown;
+  align-self: flex-start;
+  max-width: 80%;
+  margin: 10px;
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: auto;
+  background-color: lightyellow;
+  border: 8px solid #2ea00b;
+  border-radius: 30px;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+}
+
+.receiver::before {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -40px;
+  right: auto;
+  top: -8px;
+  bottom: auto;
+  border: 32px solid;
+  border-color: #2ea00b transparent transparent transparent;
+}
+
+.receiver::after {
+  content: " ";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -20px;
+  right: auto;
+  top: 0px;
+  bottom: auto;
+  border: 22px solid;
+  border-color: lightyellow transparent transparent transparent;
+}
