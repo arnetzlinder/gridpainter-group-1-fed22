@@ -3,22 +3,22 @@ const userContainer = document.getElementById("users");
 
 const gameboard = document.getElementById("game");
 
-export function renderPlayersButton() {
-  let renderPlayersButton = document.createElement("button");
-  renderPlayersButton.classList.add("render-players-button");
-  renderPlayersButton.innerHTML = "Render players";
-  gameboard.appendChild(renderPlayersButton);
+// export function renderPlayersButton() {
+//   let renderPlayersButton = document.createElement("button");
+//   renderPlayersButton.classList.add("render-players-button");
+//   renderPlayersButton.innerHTML = "Render players";
+//   gameboard.appendChild(renderPlayersButton);
 
-  renderPlayersButton.addEventListener("click", () => {
-    const currentPlayers = userContainer.querySelectorAll(".player-container");
-    if (currentPlayers.length >= 4) {
-      renderPlayersButton.disabled = true;
-      renderPlayersButton.innerText = "Game is full";
-      return;
-    }
-    renderPlayingUsers();
-  });
-}
+//   renderPlayersButton.addEventListener("click", () => {
+//     const currentPlayers = userContainer.querySelectorAll(".player-container");
+//     if (currentPlayers.length >= 4) {
+//       renderPlayersButton.disabled = true;
+//       renderPlayersButton.innerText = "Game is full";
+//       return;
+//     }
+//     renderPlayingUsers();
+//   });
+// }
 
 export function renderPlayingUsers() {
   if (userContainer.getAttribute("data-rendered") === "true") {
@@ -50,13 +50,13 @@ export function renderPlayingUsers() {
       userContainer.appendChild(playerContainer);
     });
 
-    if (players.length >= 4) {
-      let renderPlayersButton = document.querySelector(
-        ".render-players-button"
-      );
-      renderPlayersButton.disabled = true;
-      renderPlayersButton.innerText = "Game is full";
-    }
+    // if (players.length >= 4) {
+    //   let renderPlayersButton = document.querySelector(
+    //     ".render-players-button"
+    //   );
+    //   renderPlayersButton.disabled = true;
+    //   renderPlayersButton.innerText = "Game is full";
+    // }
   }
 
   socket.off("player-list", handlePlayerList);
