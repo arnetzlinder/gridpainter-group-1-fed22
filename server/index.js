@@ -97,7 +97,7 @@ io.on("connection", (socket) => {
       players = [];
 
       io.emit("endgame", percentage);
-    }, 30000);
+    }, 60000);
 
     //io.emit("chat", arg);
   });

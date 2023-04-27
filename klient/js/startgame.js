@@ -18,9 +18,9 @@ export function renderStartBtn() {
 
   startGameBtn.addEventListener("click", function () {
     startGame();
-    setTimeout(() => {
-      timeToSaveImage();
-    }, 58500);
+    // setTimeout(() => {
+    //   timeToSaveImage();
+    // }, 58500);
   });
   socket.on("activate-startBtn", () => {
     startGameBtn.disabled = false;
@@ -53,7 +53,7 @@ socket.on("startgame", (arg) => {
     [...cells].forEach((cell) => {
       cell.classList.remove("brown", "black", "red", "yellow");
     });
-  }, 60000);
+  }, 5000);
 });
 
 function hideStartBtn() {
@@ -65,7 +65,7 @@ socket.on("endgame", (arg) => {
   arg = arg * 100;
 
   let percentage = Math.round(arg);
-
+  timeToSaveImage();
   gameContainer.innerHTML = `
   <h2>You were ${percentage}% right</h2>
   <button id="playAgainBtn">Play again</button>`;
@@ -74,6 +74,8 @@ socket.on("endgame", (arg) => {
   playAgainBtn.addEventListener("click", () => {
     socket.emit("playAgain");
   });
+ 
+
 });
 
 // play again listener
