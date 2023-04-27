@@ -53,7 +53,7 @@ socket.on("startgame", (arg) => {
     [...cells].forEach((cell) => {
       cell.classList.remove("brown", "black", "red", "yellow");
     });
-  }, 5000);
+  }, 60000);
 });
 
 function hideStartBtn() {
