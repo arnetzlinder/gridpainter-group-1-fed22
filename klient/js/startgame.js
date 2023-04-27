@@ -20,7 +20,7 @@ export function renderStartBtn() {
     startGame();
     setTimeout(() => {
       timeToSaveImage();
-    }, 59000);
+    }, 58500);
   });
   socket.on("activate-startBtn", () => {
     startGameBtn.disabled = false;
