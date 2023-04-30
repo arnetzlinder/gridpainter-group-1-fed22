@@ -4,7 +4,7 @@ const gameboard = document.getElementById("game");
 export async function renderPictures() {
   const token = localStorage.getItem("token");
 
-  const response = await fetch("http://gridpainters.com:3000/pics", {
+  const response = await fetch("https://gridpainters.com:3000/pics", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export function saveImage(dataURL) {
     picture: dataURL,
   };
 
-  fetch("http://gridpainters.com:3000/pics/save", {
+  fetch("https://gridpainters.com:3000/pics/save", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
