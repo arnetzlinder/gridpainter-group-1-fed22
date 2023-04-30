@@ -74,7 +74,7 @@ export function renderLogin() {
       const username = usernameInput.value;
       const password = passwordInput.value;
 
-      const response = await fetch("http://gridpainters.com:3000/login", {
+      const response = await fetch("https://gridpainters.com:3000/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

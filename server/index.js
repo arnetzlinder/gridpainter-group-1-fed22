@@ -1,7 +1,15 @@
 const express = require("express");
 const path = require("path");
 const app = require("express")();
-const server = require("http").createServer(app);
+const https = require('https');
+const fs = require('fs');
+const server = https.createServer({     
+  key: fs.readFileSync('../certs/privkey1.pem'),     
+  cert: fs.readFileSync('../certs/cert1.pem'),     
+  ca: fs.readFileSync('../certs/chain1.pem'),
+  requestCert: false,     
+  rejectUnauthorized: false },app);
+// const server = require("http").createServer(app);
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
@@ -132,7 +140,6 @@ io.on("connection", (socket) => {
 
   io.emit("player-list", players);
 });
-//});
 
 server.listen(3000);
 
